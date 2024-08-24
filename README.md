@@ -3,7 +3,6 @@ This Project is an attempt for simplifying game development, it was my personal 
 you want to use it you can free use it but please see LICENCE.md
 
 # This uses SDL2
-/*
   Simple DirectMedia Layer
   Copyright (C) 1997-2019 Sam Lantinga <slouken@libsdl.org>
 
@@ -22,6 +21,5 @@ you want to use it you can free use it but please see LICENCE.md
   2. Altered source versions must be plainly marked as such, and must not be
      misrepresented as being the original software.
   3. This notice may not be removed or altered from any source distribution.
-*/
 
 Thanks for reading :)
