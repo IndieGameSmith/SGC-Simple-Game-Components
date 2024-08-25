@@ -10,31 +10,31 @@
  */
 
 #include "include/Math/Vector2f.hpp"
-#include "include/Math/Matrix2f.cpp"
-#include "include/UtilsExceptions.hpp"
+#include "include/Math/Matrix2f.hpp"
+#include "include/Utils/Exceptions/Math_Exception.hpp"
 
 #include <iostream>
 #include <cmath>
 
 constexpr double TOLERANCE_VALUE = 1e-6;
 
-std::ostream& operator<<(std::ostream &str, Math::Vector2f const &v)
+std::ostream& operator<<(std::ostream &str, Game::Math::Vector2f const &v)
 {
 	str << "[" << v.x << ", " << v.y << "]";
 	return str;
 }
 
-Math::Vector2f :: Vector2f() : x(0.0f), y(0.0f)
+Game::Math::Vector2f :: Vector2f() : x(0.0f), y(0.0f)
 {
     
 }
 
-Math::Vector2f :: Vector2f(double p_x, double p_y) : x(p_x), y(p_y)
+Game::Math::Vector2f :: Vector2f(double p_x, double p_y) : x(p_x), y(p_y)
 {
     
 }
 
-Math::Vector2f& Math::Vector2f :: operator+(const Math::Vector2f& other)
+Game::Math::Vector2f& Game::Math::Vector2f :: operator+(const Game::Math::Vector2f& other)
 {
 	x += other.x;
 	y += other.y;
@@ -42,7 +42,7 @@ Math::Vector2f& Math::Vector2f :: operator+(const Math::Vector2f& other)
 	return *this;
 }
 
-Math::Vector2f& Math::Vector2f :: operator-(const Math::Vector2f& other) 
+Game::Math::Vector2f& Game::Math::Vector2f :: operator-(const Game::Math::Vector2f& other) 
 {
 	x -= other.x;
 	y -= other.y;
@@ -50,7 +50,7 @@ Math::Vector2f& Math::Vector2f :: operator-(const Math::Vector2f& other)
 	return *this;
 }
 
-Math::Vector2f& Math::Vector2f :: operator*(double scaler) 
+Game::Math::Vector2f& Game::Math::Vector2f :: operator*(double scaler) 
 {
 	x *= scaler;
 	y *= scaler;
@@ -58,18 +58,18 @@ Math::Vector2f& Math::Vector2f :: operator*(double scaler)
 	return *this;
 }
 
-Math::Vector2f Math::Vector2f::operator*(const Matrix2f& matrix) const
+Game::Math::Vector2f Game::Math::Vector2f::operator*(const Matrix2f& matrix) const
 {
     return Vector2f(
-        x * matrix.getElement(0, 0) + y * matrix.getElement(1, 0),
-        x * matrix.getElement(0, 1) + y * matrix.getElement(1, 1)
+        x * matrix.GetElement(0, 0) + y * matrix.GetElement(1, 0),
+        x * matrix.GetElement(0, 1) + y * matrix.GetElement(1, 1)
     );
 }
 
-Math::Vector2f& Math::Vector2f :: operator/(double scaler) 
+Game::Math::Vector2f& Game::Math::Vector2f :: operator/(double scaler) 
 {
 	if (scaler == 0)
-		throw Exception::DivisionByZero("Can't be divided by 0");
+		throw Exception::Math::DivisionByZero("Can't be divided by 0");
 	
 	x /= scaler;
 	y /= scaler;
@@ -77,17 +77,17 @@ Math::Vector2f& Math::Vector2f :: operator/(double scaler)
 	return *this;
 }
 
-bool Math::Vector2f :: operator==(const Vector2f& other) const
+bool Game::Math::Vector2f :: operator==(const Vector2f& other) const
 {
     return x == other.x && y == other.y;
 }
 
-bool Math::Vector2f :: operator!=(const Vector2f& other) const
+bool Game::Math::Vector2f :: operator!=(const Vector2f& other) const
 {
     return !(x == other.x && y == other.y);
 }
 
-Math::Vector2f& Math::Vector2f :: Add(const Math::Vector2f& other) 
+Game::Math::Vector2f& Game::Math::Vector2f :: Add(const Game::Math::Vector2f& other) 
 {
 	x += other.x;
 	y += other.y;
@@ -95,7 +95,7 @@ Math::Vector2f& Math::Vector2f :: Add(const Math::Vector2f& other)
 	return *this;
 }
 
-Math::Vector2f& Math::Vector2f :: Sub(const Math::Vector2f& other) 
+Game::Math::Vector2f& Game::Math::Vector2f :: Sub(const Game::Math::Vector2f& other) 
 {
 	x -= other.x;
 	y -= other.y;
@@ -103,7 +103,7 @@ Math::Vector2f& Math::Vector2f :: Sub(const Math::Vector2f& other)
 	return *this;
 }
 
-Math::Vector2f& Math::Vector2f :: Multiply(const double scaler) 
+Game::Math::Vector2f& Game::Math::Vector2f :: Multiply(const double scaler) 
 {
 	x *= scaler;
 	y *= scaler;
@@ -111,10 +111,10 @@ Math::Vector2f& Math::Vector2f :: Multiply(const double scaler)
 	return *this;
 }
 
-Math::Vector2f& Math::Vector2f :: Divide(const double scaler) 
+Game::Math::Vector2f& Game::Math::Vector2f :: Divide(const double scaler) 
 {
 	if (scaler == 0)
-		throw Exception::DivisionByZero("Can't be divided by 0");
+		throw Exception::Math::DivisionByZero("Can't be divided by 0");
 	
 	x /= scaler;
 	y /= scaler;
@@ -122,27 +122,27 @@ Math::Vector2f& Math::Vector2f :: Divide(const double scaler)
 	return *this;
 }
 
-double Math::Vector2f :: DotProduct(const Math::Vector2f& other) const
+double Game::Math::Vector2f :: DotProduct(const Game::Math::Vector2f& other) const
 {
     return x * other.x + y * other.y;
 }
 
-double Math::Vector2f :: CrossProduct(const Math::Vector2f& other) const
+double Game::Math::Vector2f :: CrossProduct(const Game::Math::Vector2f& other) const
 {
     return x * other.x - y * other.y;
 }
 
-double Math::Vector2f :: Magnitude() const
+double Game::Math::Vector2f :: Magnitude() const
 {
 	return std::sqrt(x * x + y * y);
 }
 
-Math::Vector2f Math::Vector2f :: Normalize() const
+Game::Math::Vector2f Game::Math::Vector2f :: Normalize() const
 {
 	Vector2f v;
 	v.x = x;
 	v.y = y;
-	double mag = Math::Vec2f_Magnitude(v);
+	double mag = Game::Math::Vec2f_Magnitude(v);
     
     Vector2f result(v);
     
@@ -155,7 +155,7 @@ Math::Vector2f Math::Vector2f :: Normalize() const
     return result;
 }
 
-Math::Vector2f Math::Vector2f :: GetVec() const
+Game::Math::Vector2f Game::Math::Vector2f :: GetVec() const
 {
     Vector2f result;
     result.x = x;
@@ -163,13 +163,13 @@ Math::Vector2f Math::Vector2f :: GetVec() const
     return result;
 }
 
-void Math::Vector2f :: SetVec(double p_x, double p_y)
+void Game::Math::Vector2f :: SetVec(double p_x, double p_y)
 {
     x = p_x;
     y = p_y;
 }
 
-Math::Vector2f Math::Vec2f_Add(Math::Vector2f& v1, Math::Vector2f& v2)
+Game::Math::Vector2f Game::Math::Vec2f_Add(Game::Math::Vector2f& v1, Game::Math::Vector2f& v2)
 {
     Vector2f result;
     result.x = v1.x + v2.x;
@@ -178,7 +178,7 @@ Math::Vector2f Math::Vec2f_Add(Math::Vector2f& v1, Math::Vector2f& v2)
     return result;
 }
 
-Math::Vector2f Math::Vec2f_Substract(Math::Vector2f& v1, Math::Vector2f& v2)
+Game::Math::Vector2f Game::Math::Vec2f_Substract(Game::Math::Vector2f& v1, Game::Math::Vector2f& v2)
 {
     Vector2f result;
     result.x = v1.x - v2.x;
@@ -187,7 +187,7 @@ Math::Vector2f Math::Vec2f_Substract(Math::Vector2f& v1, Math::Vector2f& v2)
     return result;
 }
 
-Math::Vector2f Math::Vec2f_Multiply(Math::Vector2f& v, const double scaler)
+Game::Math::Vector2f Game::Math::Vec2f_Multiply(Game::Math::Vector2f& v, const double scaler)
 {
     Vector2f result;
     result.x = v.x * scaler;
@@ -196,12 +196,12 @@ Math::Vector2f Math::Vec2f_Multiply(Math::Vector2f& v, const double scaler)
     return result;
 }
 
-Math::Vector2f Math::Vec2f_Multiply(Math::Vector2f& v1, Math::Vector2f& v2)
+Game::Math::Vector2f Game::Math::Vec2f_Multiply(Game::Math::Vector2f& v1, Game::Math::Vector2f& v2)
 {   
     return Vector2f(v1.x * v2.x , v1.y * v2.y);
 }
 
-Math::Vector2f Math::Vec2f_Divide(Math::Vector2f& v , const double scaler)
+Game::Math::Vector2f Game::Math::Vec2f_Divide(Game::Math::Vector2f& v , const double scaler)
 {
     if (scaler == 0.0f)
         throw Exception::DivisionByZero("Can't be divided by 0");
@@ -213,32 +213,32 @@ Math::Vector2f Math::Vec2f_Divide(Math::Vector2f& v , const double scaler)
     return result;
 }
 
-Math::Vector2f Math::Vec2f_MultipyByMatrix(Math::Vector2f& v, Math::Matrix2f& matrix)
+Game::Math::Vector2f Game::Math::Vec2f_MultipyByMatrix(Game::Math::Vector2f& v, Game::Math::Matrix2f& matrix)
 {
     return Vector2f(
-        v.x * matrix.getElement(0, 0) + v.y * matrix.getElement(1, 0),
-        v.x * matrix.getElement(0, 1) + v.y * matrix.getElement(1, 1)
+        v.x * matrix.GetElement(0, 0) + v.y * matrix.GetElement(1, 0),
+        v.x * matrix.GetElement(0, 1) + v.y * matrix.GetElement(1, 1)
     );
 }
 
-double Math::Vec2f_DotProduct(Math::Vector2f& v1, Math::Vector2f& v2)
+double Game::Math::Vec2f_DotProduct(Game::Math::Vector2f& v1, Game::Math::Vector2f& v2)
 {
     return v1.x * v2.x + v1.y * v2.y;
 }
 
-double Math::Vec2f_CrossProduct(Math::Vector2f& v1, Math::Vector2f& v2)
+double Game::Math::Vec2f_CrossProduct(Game::Math::Vector2f& v1, Game::Math::Vector2f& v2)
 {
     return v1.x * v2.x - v1.y * v2.y;
 }
 
-double Math::Vec2f_Magnitude(Math::Vector2f& v)
+double Game::Math::Vec2f_Magnitude(Game::Math::Vector2f& v)
 {
     return std::sqrt(v.x * v.x + v.y * v.y);
 }
 
-Math::Vector2f Math::Vec2f_Normalize(Math::Vector2f& v)
+Game::Math::Vector2f Game::Math::Vec2f_Normalize(Game::Math::Vector2f& v)
 {
-    double mag = Math::Vec2f_Magnitude(v);
+    double mag = Game::Math::Vec2f_Magnitude(v);
     
     Vector2f result(v);
     
@@ -251,7 +251,7 @@ Math::Vector2f Math::Vec2f_Normalize(Math::Vector2f& v)
     return result;
 }
 
-double Math::Vec2f_Distance(Math::Vector2f& v1, Math::Vector2f& v2)
+double Game::Math::Vec2f_Distance(Game::Math::Vector2f& v1, Game::Math::Vector2f& v2)
 {
    double dx = v2.x - v1.x;
    double dy = v2.y - v1.y;
@@ -259,66 +259,66 @@ double Math::Vec2f_Distance(Math::Vector2f& v1, Math::Vector2f& v2)
    return sqrt(dx * dx + dy * dy);
 }
 
-double Math::Vec2f_Angle(Math::Vector2f& v1, Math::Vector2f& v2)
+double Game::Math::Vec2f_Angle(Game::Math::Vector2f& v1, Game::Math::Vector2f& v2)
 {
-    double dotProduct = Math::Vec2f_DotProduct(v1, v2);
-    double v1_magnitude = Math::Vec2f_Magnitude(v1);
-    double v2_magnitude = Math::Vec2f_Magnitude(v2);
+    double dotProduct = Game::Math::Vec2f_DotProduct(v1, v2);
+    double v1_magnitude = Game::Math::Vec2f_Magnitude(v1);
+    double v2_magnitude = Game::Math::Vec2f_Magnitude(v2);
     
     double cosThetha = dotProduct / (v1_magnitude * v2_magnitude);
     double angle = std::acos(cosThetha);
     return angle;
 }
 
-Math::Vector2f Math::Vec2f_ProjectOnto(Math::Vector2f& Vector, Math::Vector2f& Target)
+Game::Math::Vector2f Game::Math::Vec2f_ProjectOnto(Game::Math::Vector2f& Vector, Game::Math::Vector2f& Target)
 {
-    Math::Vector2f Target_Normalized = Math::Vec2f_Normalize(Target);
+    Game::Math::Vector2f Target_Normalized = Game::Math::Vec2f_Normalize(Target);
 
-    double DotProduct = Math::Vec2f_DotProduct(Vector, Target_Normalized);
+    double DotProduct = Game::Math::Vec2f_DotProduct(Vector, Target_Normalized);
      
-    Vector2f ProjectedVector = Math::Vec2f_Multiply(Target_Normalized, DotProduct);
+    Vector2f ProjectedVector = Game::Math::Vec2f_Multiply(Target_Normalized, DotProduct);
     return ProjectedVector;
 }
 
-Math::Vector2f Math::Vec2f_Reflect(Math::Vector2f& OrignalVector, Math::Vector2f& SurfaceNormal)
+Game::Math::Vector2f Game::Math::Vec2f_Reflect(Game::Math::Vector2f& OrignalVector, Game::Math::Vector2f& SurfaceNormal)
 {
-    double DotProduct = Math::Vec2f_DotProduct(OrignalVector, SurfaceNormal);
+    double DotProduct = Game::Math::Vec2f_DotProduct(OrignalVector, SurfaceNormal);
     Vector2f ScaledVector = SurfaceNormal * 2.0f * DotProduct;
     
-    Vector2f ReflectedVector = Math::Vec2f_Substract(OrignalVector, ScaledVector);
+    Vector2f ReflectedVector = Game::Math::Vec2f_Substract(OrignalVector, ScaledVector);
     
     return ReflectedVector;
 }
 
-Math::Vector2f Math::Vec2f_Rotate(Math::Vector2f& vector, double angle)
+Game::Math::Vector2f Game::Math::Vec2f_Rotate(Game::Math::Vector2f& vector, double angle)
 {
     double cosTheta = cos(angle);
     double sinTheta = sin(angle);
     
     // This could be done by Matrix2f But I preferred to do it like this
-    return Math::Vector2f(
+    return Game::Math::Vector2f(
         vector.x * cosTheta - vector.y * sinTheta,
         vector.x * sinTheta + vector.y * cosTheta
     );
 }
 
-void Math::Vec2f_Clamp(Math::Vector2f& vector, Math::Vector2f& min, Math::Vector2f& max)
+void Game::Math::Vec2f_Clamp(Game::Math::Vector2f& vector, Game::Math::Vector2f& min, Game::Math::Vector2f& max)
 {
     vector.x = std::clamp(vector.x, min.x, max.x);
     vector.y = std::clamp(vector.y, min.y, max.y);
 }
 
-Math::Vector2f Math::Vec2f_Round(Math::Vector2f& v, Math::Vec2f_Round_Flag flag)
+Game::Math::Vector2f Game::Math::Vec2f_Round(Game::Math::Vector2f& v, Game::Math::Vec2f_Round_Flag flag)
 {
     switch (flag)
     {
-        case Math::Vec2f_Round_Flag::ToFloor:
+        case Game::Math::Vec2f_Round_Flag::ToFloor:
             return Vector2f((std::floor(v.x)), (std::floor(v.y)));
             
-        case Math::Vec2f_Round_Flag::ToCeil:
+        case Game::Math::Vec2f_Round_Flag::ToCeil:
             return Vector2f((std::ceil(v.x)), (std::ceil(v.y)));
             
-        case Math::Vec2f_Round_Flag::ToNearest:
+        case Game::Math::Vec2f_Round_Flag::ToNearest:
             return Vector2f((std::round(v.x)), (std::round(v.y)));
             
         default:
@@ -326,7 +326,7 @@ Math::Vector2f Math::Vec2f_Round(Math::Vector2f& v, Math::Vec2f_Round_Flag flag)
     }
 }
 
-Math::Vector2f Math::Vec2f_Lerp(Math::Vector2f& start, Math::Vector2f& end, double t)
+Game::Math::Vector2f Game::Math::Vec2f_Lerp(Game::Math::Vector2f& start, Game::Math::Vector2f& end, double t)
 {
     Vector2f result;
     result.x = start.x + (end.x - start.x) * t;
@@ -334,12 +334,12 @@ Math::Vector2f Math::Vec2f_Lerp(Math::Vector2f& start, Math::Vector2f& end, doub
     return result;
 }
 
-bool Math::Vec2f_IsEqual(Math::Vector2f& v1, Math::Vector2f& v2)
+bool Game::Math::Vec2f_IsEqual(Game::Math::Vector2f& v1, Game::Math::Vector2f& v2)
 {
     return v1.x == v2.x && v1.y == v2.y;
 }
 
-bool Math::Vec2f_IsNotEqual(Math::Vector2f& v1, Math::Vector2f& v2)
+bool Game::Math::Vec2f_IsNotEqual(Game::Math::Vector2f& v1, Game::Math::Vector2f& v2)
 {
     return !(v1.x == v2.x && v1.y == v2.y);
 }
