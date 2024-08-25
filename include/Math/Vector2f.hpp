@@ -1,7 +1,7 @@
 /** 
  *  \file Vector2f.hpp
  *  
- *  \brief Header file for Vector2f of 2 doubleing point integers.
+ *  \brief Header file for Vector2f of 2 double point integers.
  *
  *  This supports vector related functions.
  *
