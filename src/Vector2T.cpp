@@ -1,7 +1,7 @@
 /** 
  *  \file Vector2T.cpp
  *  
- *  \brief Source file for Vector2T<T> of 2 double point integers.
+ *  \brief Source file for Vector2T.hpp .
  *
  *  This supports vector related functions.
  *
