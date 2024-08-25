@@ -29,9 +29,9 @@ struct Vector2T
 
 	Vector2T operator+(const Vector2T& other) const;
 	Vector2T operator-(const Vector2T& other) const;
-	Vector2T operator*(double scaler) const;
+	Vector2T operator*(const double scaler) const;
 	Vector2T operator*(const Game::Math::Matrix2f& matrix) const;
-	Vector2T operator/(double scaler) const;
+	Vector2T operator/(const double scaler) const;
 	bool operator==(const Vector2T& other) const;
 	bool operator!=(const Vector2T& other) const;
 	
