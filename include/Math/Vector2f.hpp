@@ -15,6 +15,9 @@
 #include <iostream>
 #include "Matrix2f.hpp"
 
+namespace Game
+{
+
 namespace Math
 {
 
@@ -319,5 +322,7 @@ bool Vec2f_IsNotEqual(Vector2f& v1, Vector2f& v2);
 std::ostream& operator<<(std::ostream str, Vector2f& vec);
 
 } // namespace Math
+
+} // namespace Game
 
 #endif // VECTOR2F_HPP_
