@@ -1,7 +1,7 @@
 /** 
  *  \file Matrix2f.hpp
  *  
- *  \brief Header file for Matrix2f of 2 double point integers.
+ *  \brief Header file for Matrix2f of 4 double point integers.
  *
  *  This supports Matrix2x2 related functions.
  *
@@ -52,7 +52,7 @@ struct Matrix2f
 	Matrix2f Multiply(Matrix2f& other);
 	Matrix2f Divide(const double scaler);
 	double Determinant();
-	Matrix2f Inmaterse();
+	Matrix2f Inverse();
 	Matrix2f Transpose(); 
 	
 	double GetElement(int row, int col) const;
