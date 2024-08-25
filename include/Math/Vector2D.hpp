@@ -343,4 +343,4 @@ std::ostream& operator<<(std::ostream str, Vector2D<T>& vec);
 
 } // namespace Game
 
-#endif // VECTOR2F_HPP_
+#endif // VECTOR2D_HPP_
