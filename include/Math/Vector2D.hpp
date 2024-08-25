@@ -43,6 +43,7 @@ struct Vector2D
 	double CrossProduct(const Vector2D& other) const;
 	double Magnitude() const;
 	Vector2D Normalize() const;
+	Vector2D Perpendicular() const;
 	
 	Vector2D GetVec() const;
 	void SetVec(T x, T y);
@@ -196,13 +197,29 @@ Vector2D<T> Vec2D_Normalize(Vector2D<T>& v);
  *
  *  \brief Normalizes of a Vector2D.
  *  
- *  \returns a Rsultant Floating point quantity.
+ *  \returns a Rsultant Vector2D quantity.
  *
  *  \sa Vec2D_Magnitude()
  *  \sa Vec2D_DotProduct()
  *  \sa Vec2D_Distance()
  *
  */
+
+template <typename T>
+Vector2D<T> Vec2D_Perpendicular(const Vector2D<T>& v);
+/**
+ *  \param v Vector2D.
+ *
+ *  \brief Calculates Perpendicular of a Vector2D.
+ *  
+ *  \returns a Rsultant  Vector2D quantity.
+ *
+ *  \sa Vec2D_Magnitude()
+ *  \sa Vec2D_DotProduct()
+ *  \sa Vec2D_Distance()
+ *
+ */
+
 template <typename T>
 double Vec2D_Distance(const Vector2D<T>& v1, const Vector2D<T>& v2);
 /** 
