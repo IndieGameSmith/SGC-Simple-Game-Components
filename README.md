@@ -1,6 +1,6 @@
 # SGC-Simple-Game-Components
 This Project is an attempt for simplifying game development, it was my personal project but if
-you want to use it you can free use it but please see LICENCE.md
+you want to use it, you can free use it, but please see LICENCE.
 
 # This uses SDL2
   Simple DirectMedia Layer
