@@ -15,6 +15,9 @@
 #include <string>
 #include <exception>
 
+namespace Game 
+{
+
 namespace Math
 {
 
@@ -64,5 +67,7 @@ private:
 } // namespace Exception 
 
 } // namespace Math
+
+} // namespace Game
 
 #endif // EXCEPTIONS_HPP_
