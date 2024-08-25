@@ -8,4 +8,5 @@
 
 ## Reporting a Vulnerability
 
-You can Report an Vulnerability in my GitHub Page.
+You can Report an Vulnerability through Comments in this section.
+[Currently My Email Is Down].
