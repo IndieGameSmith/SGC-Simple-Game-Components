@@ -9,8 +9,8 @@
  *  \date 2024-08-23
  */
  
-#ifndef VECTOR2F_HPP_
-#define VECTOR2F_HPP_
+#ifndef VECTOR2D_HPP_
+#define VECTOR2D_HPP_
 
 #include <iostream>
 #include "Matrix2f.hpp"
