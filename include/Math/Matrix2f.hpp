@@ -14,6 +14,9 @@
 
 #include <iostream>
 
+namespace Game
+{
+
 namespace Math
 {
 
@@ -199,5 +202,7 @@ bool Mat2f_IsNotEqual(Matrix2f& mat1, Matrix2f& mat2);
 std::ostream& operator<<(std::ostream str, Matrix2f& mat);
 
 } // namespace Math
+
+} // namespace Game
 
 #endif // MATRIX2F_HPP_
