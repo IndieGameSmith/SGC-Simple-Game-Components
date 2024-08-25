@@ -1,7 +1,7 @@
 /** 
  *  \file Vector2T.hpp
  *  
- *  \brief Header file for Vector2T of 2 Ting point integers.
+ *  \brief Header file for Vector2T of 2 Numbers.
  *
  *  This supports vector related functions.
  *
