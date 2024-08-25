@@ -1,5 +1,5 @@
 /** 
- *  \file Vector2D<T>.cpp
+ *  \file Vector2D.cpp
  *  
  *  \brief Source file for Vector2D.
  *
