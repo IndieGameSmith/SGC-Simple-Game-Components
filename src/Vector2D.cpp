@@ -155,10 +155,7 @@ Game::Math::Vector2D<T> Game::Math::Vector2D<T> :: Perpendicular() const
 template <typename T>
 Game::Math::Vector2D<T> Game::Math::Vector2D<T> :: GetVec() const
 {
-    Vector2D<T> result;
-    result.x = x;
-    result.y = y;
-    return result;
+    return Vector2D<T>(x, y);
 }
 
 template <typename T>
