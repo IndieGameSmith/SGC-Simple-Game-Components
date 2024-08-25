@@ -9,11 +9,14 @@
  *  \date 2024-08-23
  */
 
-#ifndef EXCEPTIONS_HPP_
-#define EXCEPTIONS_HPP_
+#ifndef MATH_EXCEPTION_HPP_
+#define MATH_EXCEPTION_HPP_
 
 #include <string>
 #include <exception>
+
+namespace Math
+{
 
 namespace Exception
 {
@@ -58,6 +61,8 @@ private:
     const char* message;
 };
 
-}
+} // namespace Exception 
+
+} // namespace Math
 
 #endif // EXCEPTIONS_HPP_
