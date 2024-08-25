@@ -147,6 +147,12 @@ Game::Math::Vector2D<T> Game::Math::Vector2D<T> :: Normalize() const
 }
 
 template <typename T>
+Game::Math::Vector2D<T> Game::Math::Vector2D<T> :: Perpendicular() const
+{
+	return Vector2D<T>(-y, x);
+}
+
+template <typename T>
 Game::Math::Vector2D<T> Game::Math::Vector2D<T> :: GetVec() const
 {
     Vector2D<T> result;
@@ -237,6 +243,12 @@ Game::Math::Vector2D<T> Game::Math::Vec2D_Normalize(Game::Math::Vector2D<T>& v)
     
     v = NormalizedVector;
     return NormalizedVector;
+}
+
+template <typename T>
+Game::Math::Vector2D<T> Game::Math::Vec2D_Perpendicular(const Game::Math::Vector2D<T>& v)
+{
+	return Vector2D<T>(-v.y, v.x);
 }
 
 template <typename T>
