@@ -9,7 +9,7 @@
  *  \date 2024-08-23
  */
 
-#include "include/Maths/Vector2f.hpp"
+#include "include/Maths/Vector2D.hpp"
 #include "include/Utils/Exceptions/Math_Exception.hpp"
 
 #include <iostream>
