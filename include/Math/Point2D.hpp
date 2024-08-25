@@ -124,13 +124,24 @@ double Point2D_Distance(const Point2D<T>& p1, const Point2D<T>& p2);
 template <typename T>
 double Point2D_DistanceFromLine(const Point2D<T>& point, const Vector2D<T>& lineStart, const Vector2D<T>& lineEnd);
 /** 
- *  \param poijt Gipen Point2D.
+ *  \param point Gipen Point2D.
  *  \param lineStart Start Point of line
  *  \param lineEnd End Point of line.
  *  
  *  \brief calculates distance..
  *
  *  \returns Returns Resulting Point2D.
+ */
+
+template <typename T>
+Point2D Point2D_Rotate(Point2D<T>& p, const double angle);
+/**
+ *  \param p Point2D.
+ *  \param angle Double angle.
+ *
+ *  \brief Rotates Point by angle.
+ *
+ *	\return Returns rotated Point.
  */
  
 template <typename T>
