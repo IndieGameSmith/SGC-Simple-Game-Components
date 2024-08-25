@@ -69,7 +69,7 @@ Game::Math::Vector2f Game::Math::Vector2f::operator*(const Matrix2f& matrix) con
 Game::Math::Vector2f& Game::Math::Vector2f :: operator/(double scaler) 
 {
 	if (scaler == 0)
-		throw Exception::Math::DivisionByZero("Can't be divided by 0");
+		throw Game::Math::Exception::DivisionByZero("Can't be divided by 0");
 	
 	x /= scaler;
 	y /= scaler;
@@ -114,7 +114,7 @@ Game::Math::Vector2f& Game::Math::Vector2f :: Multiply(const double scaler)
 Game::Math::Vector2f& Game::Math::Vector2f :: Divide(const double scaler) 
 {
 	if (scaler == 0)
-		throw Exception::Math::DivisionByZero("Can't be divided by 0");
+		throw Game::Math::Exception::DivisionByZero("Can't be divided by 0");
 	
 	x /= scaler;
 	y /= scaler;
@@ -204,7 +204,7 @@ Game::Math::Vector2f Game::Math::Vec2f_Multiply(Game::Math::Vector2f& v1, Game::
 Game::Math::Vector2f Game::Math::Vec2f_Divide(Game::Math::Vector2f& v , const double scaler)
 {
     if (scaler == 0.0f)
-        throw Exception::DivisionByZero("Can't be divided by 0");
+        throw Game::Math::Exception::DivisionByZero("Can't be divided by 0");
     
     Vector2f result;
     result.x = v.x / scaler;
@@ -322,7 +322,7 @@ Game::Math::Vector2f Game::Math::Vec2f_Round(Game::Math::Vector2f& v, Game::Math
             return Vector2f((std::round(v.x)), (std::round(v.y)));
             
         default:
-            throw Exception::InvalidRoundFlag("Invalid Round Flag");
+            throw Game::Math::Exception::InvalidRoundFlag("Invalid Round Flag");
     }
 }
 
