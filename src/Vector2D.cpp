@@ -301,7 +301,6 @@ Game::Math::Vector2D<T> Game::Math::Vec2D_ProjectOn(Game::Math::Vector2D<T>& Vec
     double DotProduct = Game::Math::Vec2D_DotProduct(Vector, Target_Normalized);
      
     Vector2D<T> ProjectedVector = Game::Math::Vec2D_Multiply(Target_Normalized, DotProduct);
-    Vector = ProjectedVector;
     
     return ProjectedVector;
 }
