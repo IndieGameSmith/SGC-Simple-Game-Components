@@ -394,7 +394,7 @@ double Game::Math::Vec2D_Angle(const Game::Math::Vector2D<T>& v1, const Game::Ma
 }
 
 template <typename T>
-Game::Math::Vector2D<T> Game::Math::Vec2D_ProjectOn(Game::Math::Vector2D<T>& Vector, const Game::Math::Vector2D<T>& Target)
+Game::Math::Vector2D<T> Game::Math::Vec2D_ProjectOn(const Game::Math::Vector2D<T>& Vector, const Game::Math::Vector2D<T>& Target)
 {
     Game::Math::Vector2D<T> Target_Normalized = Game::Math::Vec2D_Normalize(Target);
 
