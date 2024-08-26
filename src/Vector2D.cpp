@@ -111,13 +111,13 @@ bool Game::Math::Vector2D<T> :: operator>=(const Vector2D<T>& other) const
 template <typename T>
 Game::Math::Vector2D<T> Game::Math::Vector2D<T> :: Add(const Game::Math::Vector2D<T>& other) const
 {
-	return Vector2D<T>(x + other.x, y + other.y);
+    return Vector2D<T>(x + other.x, y + other.y);
 }
 
 template <typename T>
 Game::Math::Vector2D<T> Game::Math::Vector2D<T> :: Sub(const Game::Math::Vector2D<T>& other) const
 {
-	return Vector2D<T>(x - other.x, y - other.y);
+    return Vector2D<T>(x - other.x, y - other.y);
 }
 
 template <typename T>
@@ -129,10 +129,10 @@ Game::Math::Vector2D<T> Game::Math::Vector2D<T> :: Multiply(const double scaler)
 template <typename T>
 Game::Math::Vector2D<T> Game::Math::Vector2D<T> :: Divide(const double scaler) const
 {
-	if (scaler == 0)
-		throw Game::Math::Exception::DivisionByZero("Can't be divided by 0");
+    if (scaler == 0)
+	throw Game::Math::Exception::DivisionByZero("Can't be divided by 0");
 	
-	return Vector2D<T>(x / scaler, y / scaler);
+    return Vector2D<T>(x / scaler, y / scaler);
 }
 
 template <typename T>
@@ -150,13 +150,13 @@ double Game::Math::Vector2D<T> :: CrossProduct(const Game::Math::Vector2D<T>& ot
 template <typename T>
 double Game::Math::Vector2D<T> :: Magnitude() const
 {
-	return std::sqrt(x * x + y * y);
+    return std::sqrt(x * x + y * y);
 }
 
 template <typename T>
 Game::Math::Vector2D<T> Game::Math::Vector2D<T> :: Normalize() const
 {
-	double mag = Magnitude();
+    double mag = Magnitude();
     
     Vector2D<T> NormalizedVector;
     
@@ -168,6 +168,103 @@ Game::Math::Vector2D<T> Game::Math::Vector2D<T> :: Normalize() const
     
     *this = NormalizedVector;
     return NormalizedVector;
+}
+
+template <typename T>
+double Game::Math::Vector2D<T> :: DistanceFrom(const Game::Math::Vector2D<T>& other) const
+{
+    double dx = other.x - x;
+    double dy = other.y - y;
+    return std::sqrt(dx * dx + dy * dy);
+}
+
+template <typename T>
+double Game::Math::Vector2D<T> :: Angle(const Game::Math::Vector2D<T>& other) const
+{
+    double dotProduct = Game::Math::Vec2D_DotProduct(*this, other);
+    double v1_magnitude = Game::Math::Vec2D_Magnitude(*this);
+    double v2_magnitude = Game::Math::Vec2D_Magnitude(other);
+    
+    double cosThetha = dotProduct / (v1_magnitude * v2_magnitude);
+    double angle = std::acos(cosThetha);
+    return angle;
+}
+
+template <typename T>
+Game::Math::Vector2D<T> Game::Math::Vector2D<T> :: ProjectOn(const Game::Math::Vector2D<T>& Target) const
+{
+    Game::Math::Vector2D<T> Target_Normalized = Game::Math::Vec2D_Normalize(Target);
+
+    double DotProduct = Game::Math::Vec2D_DotProduct(*this, Target_Normalized);
+     
+    Vector2D<T> ProjectedVector = Game::Math::Vec2D_Multiply(Target_Normalized, DotProduct);
+    
+    return ProjectedVector;
+}
+
+template <typename T>
+Game::Math::Vector2D<T> Game::Math::Vector2D<T> :: Reflect(const Game::Math::Vector2D<T>& SurfaceNormal)
+{
+    double DotProduct = Game::Math::Vec2D_DotProduct(*this, SurfaceNormal);
+    Vector2D<T> ScaledVector = SurfaceNormal * 2.0f * DotProduct;
+    
+    Vector2D<T> ReflectedVector = Game::Math::Vec2D_Subtract(*this, ScaledVector);
+    *this = ReflectedVector;
+    
+    return ReflectedVector;
+}
+
+template <typename T>
+Game::Math::Vector2D<T> Game::Math::Vector2D<T> :: Rotate(const double angle)
+{
+    double cosTheta = std::cos(angle);
+    double sinTheta = std::sin(angle);
+    
+    // This could be done by Matrix2f But I preferred to do it like this
+    Game::Math::Vector2D<T> RotatedVector(
+                                          x * cosTheta - y * sinTheta,
+                                          x * sinTheta + y * cosTheta
+                                         );
+    *this = RotatedVector;
+    return RotatedVector;
+}
+
+template <typename T>
+void Game::Math::Vector2D<T> :: Clamp(const Vector2D<T>& min, const Vector2D<T>& max)
+{
+    x = std::clamp(x, min.x, max.x);
+    y = std::clamp(y, min.y, max.y);
+}
+
+template <typename T>
+Game::Math::Vector2D<T> Game::Math::Vector2D<T> :: Round(const Game::Math::Vec2D_Round_Flag& flag)
+{
+    switch (flag)
+    {
+        Vector2D<T> RoundedVector;
+        case Game::Math::Vec2D_Round_Flag::ToFloor:
+            RoundedVector.SetVec((std::floor(x)), (std::floor(y)));
+            
+        case Game::Math::Vec2D_Round_Flag::ToCeil:
+            RoundedVector.SetVec((std::ceil(x)), (std::ceil(y)));
+            
+        case Game::Math::Vec2D_Round_Flag::ToNearest:
+            RoundedVector.SetVec((std::round(x)), (std::round(y)));
+            
+        default:
+            throw Game::Math::Exception::InvalidRoundFlag("Invalid Round Flag");
+            
+        *this = RoundedVector;
+        return RoundedVector;
+    }
+}
+
+template <typename T>
+Game::Math::Vector2D<T> Game::Math::Vector2D<T> :: Lerp(const Game::Math::Vector2D<T>& other, const float t) const
+{
+    T x = x + (other.x - x) * t;
+    T y = y + (other.y - y) * t;
+    return Vector2D<T>(x, y);
 }
 
 template <typename T>
