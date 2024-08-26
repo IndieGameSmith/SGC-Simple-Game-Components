@@ -21,6 +21,13 @@ namespace Game
 namespace Math
 {
 
+enum class Vec2D_Round_Flag
+{
+    ToFloor,
+    ToCeil,
+    ToNearest
+};
+
 template <typename T>
 struct Vector2D
 {
@@ -43,19 +50,20 @@ struct Vector2D
 	double CrossProduct(const Vector2D& other) const;
 	double Magnitude() const;
 	Vector2D Normalize() const;
+	double DistanceFrom(const Vector2D& other) const;
+	double Angle(const Vector2D& other) const;
+	Vector2D ProjectOn(const Vector2D& Target) const;
+	Vector2D Reflect(const Vector2D SurfaceNormal);
+	Vector2D Rotate(const double angle);
+	void Clamp(const Vector2D& min, const Vector2D& max);
+	Vector2D Round(const Vec2D_Round_Flag& flag);
+	Vector2D Lerp(const Vector2D& other, const float t) const;
 	Vector2D Perpendicular() const;
 	
 	Vector2D GetVec() const;
 	void SetVec(T x, T y);
     
     T x, y;
-};
-
-enum class Vec2D_Round_Flag
-{
-    ToFloor,
-    ToCeil,
-    ToNearest
 };
 
 /** Mathematical Opreations */
@@ -245,7 +253,7 @@ double Vec2D_Angle(const Vector2D<T>& v1, const Vector2D<T>& v2);
  *  \returns Returns Resulting angle.
  */
 template <typename T>
-Vector2D<T> Vec2D_ProjectOnto(Vector2D<T>& Vector, const Vector2D<T>& Target);
+Vector2D<T> Vec2D_ProjectOn(const Vector2D<T>& Vector, const Vector2D<T>& Target);
 /** 
  *  \param Vector First Vector2D.
  *  \param Target Second Vector2D.
