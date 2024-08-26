@@ -382,3 +382,16 @@ bool Game::Math::Vec2D_IsNotEqual(const Game::Math::Vector2D<T>& v1, const Game:
 {
     return !(v1.x == v2.x && v1.y == v2.y);
 }
+
+template <typename T>
+bool Game::Math::Vec2D_IsGreaterThan(const Game::Math::Vector2D<T>& v1, const Game::Math::Vector2D<T>& v2)
+{
+    return v1.Magnitude() > v2.Magnitude();
+}
+
+template <typename T>
+bool Game::Math::Vec2D_IsLessThan(const Game::Math::Vector2D<T>& v1, const Game::Math::Vector2D<T>& v2)
+{
+    return v1.Magnitude() < v2.Magnitude();
+}
+
