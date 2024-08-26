@@ -244,12 +244,15 @@ Game::Math::Vector2D<T> Game::Math::Vector2D<T> :: Round(const Game::Math::Vec2D
         Vector2D<T> RoundedVector;
         case Game::Math::Vec2D_Round_Flag::ToFloor:
             RoundedVector.SetVec((std::floor(x)), (std::floor(y)));
+	    break;
             
         case Game::Math::Vec2D_Round_Flag::ToCeil:
             RoundedVector.SetVec((std::ceil(x)), (std::ceil(y)));
+	    break;
             
         case Game::Math::Vec2D_Round_Flag::ToNearest:
             RoundedVector.SetVec((std::round(x)), (std::round(y)));
+	    break;
             
         default:
             throw Game::Math::Exception::InvalidRoundFlag("Invalid Round Flag");
@@ -444,12 +447,15 @@ Game::Math::Vector2D<T> Game::Math::Vec2D_Round(Game::Math::Vector2D<T>& v, cons
         Vector2D<T> RoundedVector;
         case Game::Math::Vec2D_Round_Flag::ToFloor:
             RoundedVector.SetVec((std::floor(v.x)), (std::floor(v.y)));
+	    break;
             
         case Game::Math::Vec2D_Round_Flag::ToCeil:
             RoundedVector.SetVec((std::ceil(v.x)), (std::ceil(v.y)));
+	    break;
             
         case Game::Math::Vec2D_Round_Flag::ToNearest:
             RoundedVector.SetVec((std::round(v.x)), (std::round(v.y)));
+	    break;
             
         default:
             throw Game::Math::Exception::InvalidRoundFlag("Invalid Round Flag");
