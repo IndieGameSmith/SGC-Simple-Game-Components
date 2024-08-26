@@ -85,6 +85,30 @@ bool Game::Math::Vector2D<T> :: operator!=(const Vector2D<T>& other) const
 }
 
 template <typename T>
+bool Game::Math::Vector2D<T> :: operator<(const Vector2D<T>& other) const
+{
+    return Magnitude() < other.Magnitude();
+}
+
+template <typename T>
+bool Game::Math::Vector2D<T> :: operator>(const Vector2D<T>& other) const
+{
+    return Magnitude() > other.Magnitude();
+}
+
+template <typename T>
+bool Game::Math::Vector2D<T> :: operator<=(const Vector2D<T>& other) const
+{
+    return Magnitude() < other.Magnitude() || Magnitude() == other.Magnitude();
+}
+
+template <typename T>
+bool Game::Math::Vector2D<T> :: operator>=(const Vector2D<T>& other) const
+{
+    return Magnitude() > other.Magnitude() || Magnitude() == other.Magnitude();
+}
+
+template <typename T>
 Game::Math::Vector2D<T> Game::Math::Vector2D<T> :: Add(const Game::Math::Vector2D<T>& other) const
 {
 	return Vector2D<T>(x + other.x, y + other.y);
