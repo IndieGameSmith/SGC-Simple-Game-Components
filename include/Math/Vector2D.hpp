@@ -342,6 +342,34 @@ bool Vec2D_IsNotEqual(const Vector2D<T>& v1, const Vector2D<T>& v2);
  *  \sa Vec2D_IsEqual()
  *
  */
+
+template <typename T>
+bool Vec2D_IsGreaterThan(const Vector2D<T>& v1, const Vector2D<T>& v2);
+/**
+ *  \param v1 First Vector2D.
+ *  \param v2 Second Vector2D.
+ *
+ *  \brief Logically compare two Vector2D quantities.
+ *
+ *  \return Returns true or false.
+ *
+ *  \sa Vec2D_IsLessThan()
+ *
+ */
+ 
+template <typename T>
+bool Vec2D_IsLessThan(const Vector2D<T>& v1, const Vector2D<T>& v2);
+/**
+ *  \param v1 First Vector2D.
+ *  \param v2 Second Vector2D.
+ *
+ *  \brief Logically compare two Vector2D quantities.
+ *
+ *  \return Returns true or false.
+ *
+ *  \sa Vec2D_IsGreaterThan()
+ *
+ */
  
 /** For printing Vector2D on console, For debugging Purposes */
 template <typename T>
