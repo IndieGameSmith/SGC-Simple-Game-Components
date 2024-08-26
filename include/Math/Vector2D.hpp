@@ -41,6 +41,10 @@ struct Vector2D
 	Vector2D operator/(const double scaler) const;
 	bool operator==(const Vector2D& other) const;
 	bool operator!=(const Vector2D& other) const;
+	bool operator<(const Vector2D& other) const;
+	bool operator>(const Vector2D& other) const;
+	bool operator<=(const Vector2D& other) const;
+	bool operator>=(const Vector2D& other) const;
 	
 	Vector2D Add(const Vector2D& other) const;
 	Vector2D Sub(const Vector2D& other) const;
