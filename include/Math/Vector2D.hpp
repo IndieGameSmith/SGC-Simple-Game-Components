@@ -57,7 +57,7 @@ struct Vector2D
 	double DistanceFrom(const Vector2D& other) const;
 	double Angle(const Vector2D& other) const;
 	Vector2D ProjectOn(const Vector2D& Target) const;
-	Vector2D Reflect(const Vector2D SurfaceNormal);
+	Vector2D Reflect(const Vector2D& SurfaceNormal);
 	Vector2D Rotate(const double angle);
 	void Clamp(const Vector2D& min, const Vector2D& max);
 	Vector2D Round(const Vec2D_Round_Flag& flag);
