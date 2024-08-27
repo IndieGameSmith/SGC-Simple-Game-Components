@@ -21,6 +21,14 @@ namespace Game
 namespace Math
 {
     
+enum class Point2D_Round_Flag
+{
+    ToFloor,
+    ToCeil,
+    ToNearest
+};
+
+    
 template <typename T>
 struct Point2D
 {
@@ -34,18 +42,17 @@ struct Point2D
     double CrossProduct(const Point2D& other) const;
     double Magnitude() const;
     Point2D Normalize() const;
-
+    double DistanceFrom(const Point2D<T> other) const;
+    double DistanceFromLine(const Vector2D<T> lineStart, const Vector2D<T> lineEnd) const;
+    Point2D<T> Rotate(const double angle);
+    void Clamp(const Point2D<T>& min, const Point2D<T>& max);
+    Point2D<T> Round(const Point2D_Round_Flag flag);
+    Point2D<T> Lerp(const Point2D<T>& other, const float t);
+    
     Point2D GetPoint() const;
     void SetPoint(T x, T y);
 
     T x, y;
-};
-
-enum class Point2D_Round_Flag
-{
-    ToFloor,
-    ToCeil,
-    ToNearest
 };
 
 /** Mathematical Opreations */
@@ -124,30 +131,30 @@ double Point2D_Distance(const Point2D<T>& p1, const Point2D<T>& p2);
 template <typename T>
 double Point2D_DistanceFromLine(const Point2D<T>& point, const Vector2D<T>& lineStart, const Vector2D<T>& lineEnd);
 /** 
- *  \param point Gipen Point2D.
+ *  \param point Given Point2D.
  *  \param lineStart Start Point of line
- *  \param lineEnd End Point of line.
+ *  \param MaxClampPoint End Point of line.
  *  
  *  \brief calculates distance..
  *
  *  \returns Returns Resulting Point2D.
  */
-
+ 
 template <typename T>
-Point2D Point2D_Rotate(Point2D<T>& p, const double angle);
+Point2D<T> Point2D_Rotate(Point2D<T>& point, const double angle);
 /**
- *  \param p Point2D.
- *  \param angle Double angle.
+ *  \param point Given Point2D.
+ *  \param angle Angle of rotation.
+ *  
+ *  \brief Rotates the point.
  *
- *  \brief Rotates Point by angle.
- *
- *	\return Returns rotated Point.
+ *  \returns Returns Resulting Point2D.
  */
  
 template <typename T>
-void Point2D_Clamp(Point2D<T>& GipenPoint, const Point2D<T>& MinClampPoint, const Point2D<T>& MaxClampPoint);
+void Point2D_Clamp(Point2D<T>& GivenPoint, const Point2D<T>& MinClampPoint, const Point2D<T>& MaxClampPoint);
 /** 
- *  \param GipenPoint Gipen Point2D.
+ *  \param GivenPoint Given Point2D.
  *  \param MinClampPoint Min point
  *  \param MaxClampPoint Max point.
  *  
@@ -157,7 +164,7 @@ void Point2D_Clamp(Point2D<T>& GipenPoint, const Point2D<T>& MinClampPoint, cons
 template <typename T>
 Point2D<T> Point2D_Round(Point2D<T>& p, const Point2D_Round_Flag flag);
 /** 
- *  \param p Gipen Point2D.
+ *  \param p Given Point2D.
  *  \param flag Flag for rounding Point2D.
  *  
  *  \brief Rounds p depending on flag.
