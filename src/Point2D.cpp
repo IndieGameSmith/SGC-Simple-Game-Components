@@ -147,7 +147,7 @@ double Game::Math::Point2D_DistanceFromLine(const Game::Math::Point2D<T>& p, con
     Game::Math::Vector2D pointToLineVector = lineStart - point;
     Game::Math::Vector2D lineDirection = lineEnd - lineStart;
     lineDirection.Normalize();
-    Game::Math::Vector2D lineNormal = lineDirection.perpendicular();
+    Game::Math::Vector2D lineNormal = lineDirection.Perpendicular();
     return std::abs(pointToLineVector.DotProduct(lineNormal));
 }
 
