@@ -256,10 +256,10 @@ Game::Math::Vector2D<T> Game::Math::Vector2D<T> :: Round(const Game::Math::Vec2D
             
         default:
             throw Game::Math::Exception::InvalidRoundFlag("Invalid Round Flag");
+    }
             
         *this = RoundedVector;
         return RoundedVector;
-    }
 }
 
 template <typename T>
@@ -459,10 +459,10 @@ Game::Math::Vector2D<T> Game::Math::Vec2D_Round(Game::Math::Vector2D<T>& v, cons
             
         default:
             throw Game::Math::Exception::InvalidRoundFlag("Invalid Round Flag");
+    }
             
         v = RoundedVector;
         return RoundedVector;
-    }
 }
 
 template <typename T>
