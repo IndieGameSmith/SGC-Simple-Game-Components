@@ -13,7 +13,7 @@
 #define POINT2D_HPP_
 
 #include <iostream>
-#include "Vector2f.hpp"
+#include "Vector2D.hpp"
 
 namespace Game
 {
