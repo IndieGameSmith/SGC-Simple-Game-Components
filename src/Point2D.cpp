@@ -180,15 +180,15 @@ Game::Math::Point2D<T> Game::Math::Point2D_Round(Game::Math::Point2D<T>& p, cons
     {
         Point2D<T> RoundedPoint;
         case Game::Math::Point2D_Round_Flag::ToFloor:
-            RoundedPoint.SetVec((std::floor(p.x)), (std::floor(p.y)));
+            RoundedPoint.SetPoint((std::floor(p.x)), (std::floor(p.y)));
 	    break;
             
         case Game::Math::Point2D_Round_Flag::ToCeil:
-            RoundedPoint.SetVec((std::ceil(p.x)), (std::ceil(p.y)));
+            RoundedPoint.SetPoint((std::ceil(p.x)), (std::ceil(p.y)));
 	    break;
             
         case Game::Math::Point2D_Round_Flag::ToNearest:
-            RoundedPoint.SetVec((std::round(p.x)), (std::round(p.y)));
+            RoundedPoint.SetPoint((std::round(p.x)), (std::round(p.y)));
 	    break;
             
         default:
