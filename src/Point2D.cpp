@@ -15,7 +15,7 @@
 #include <iostream>
 #include <cmath>
 
-constexpr double TOLERANCE_VALUE = 1e-6;
+constexpr double POINT2D_TOLERANCE_VALUE = 1e-6;
 
 template <typename T>
 std::ostream& operator<<(std::ostream &str, Game::Math::Point2D<T> const &p)
@@ -73,7 +73,7 @@ Game::Math::Point2D<T> Game::Math::Point2D<T> :: Normalize() const
     
     Point2D<T> NormalizedPoint;
     
-    if (std::abs(mag) < TOLERANCE_VALUE)
+    if (std::abs(mag) < POINT2D_TOLERANCE_VALUE)
     {
         NormalizedPoint.x = NormalizedPoint.y = 0.0f;
     }
@@ -121,7 +121,7 @@ Game::Math::Point2D<T> Game::Math::Point2D_Normalize(Game::Math::Point2D<T>& p)
     
     Point2D<T> NormalizedPoint;
     
-    if (std::abs(mag) < TOLERANCE_VALUE)
+    if (std::abs(mag) < POINT2D_TOLERANCE_VALUE)
     {
         NormalizedPoint.x = NormalizedPoint.y = 0.0f;
     }
