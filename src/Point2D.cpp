@@ -174,19 +174,22 @@ void Game::Math::Point2D_Clamp(Game::Math::Point2D<T>& Point, const Game::Math::
 }
 
 template <typename T>
-Game::Math::Point2D<T> Game::Math::Point2D_Round(Game::Math::Point2D<T>& p, const Game::Math::Point2D_Round_Flag flag)
+Game::Math::Point2D<T> Game::Math::Point2D_Round(Game::Math::Point2D<T>& p, const Game::Math::Point2D_Round_Flag& flag)
 {
     switch (flag)
     {
         Point2D<T> RoundedPoint;
         case Game::Math::Point2D_Round_Flag::ToFloor:
             RoundedPoint.SetVec((std::floor(p.x)), (std::floor(p.y)));
+	    break;
             
         case Game::Math::Point2D_Round_Flag::ToCeil:
             RoundedPoint.SetVec((std::ceil(p.x)), (std::ceil(p.y)));
+	    break;
             
         case Game::Math::Point2D_Round_Flag::ToNearest:
             RoundedPoint.SetVec((std::round(p.x)), (std::round(p.y)));
+	    break;
             
         default:
             throw Game::Math::Exception::InvalidRoundFlag("Invalid Round Flag");
