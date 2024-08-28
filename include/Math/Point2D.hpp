@@ -47,7 +47,7 @@ struct Point2D
     Point2D<T> Rotate(const double angle);
     void Clamp(const Point2D<T>& min, const Point2D<T>& max);
     Point2D<T> Round(const Point2D_Round_Flag flag);
-    Point2D<T> Lerp(const Point2D<T>& other, const float t);
+    Point2D<T> Lerp(const Point2D<T>& other, const float t) const;
     
     Point2D GetPoint() const;
     void SetPoint(T x, T y);
