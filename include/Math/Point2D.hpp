@@ -42,12 +42,12 @@ struct Point2D
     double CrossProduct(const Point2D& other) const;
     double Magnitude() const;
     Point2D Normalize() const;
-    double DistanceFrom(const Point2D<T> other) const;
-    double DistanceFromLine(const Vector2D<T> lineStart, const Vector2D<T> lineEnd) const;
+    double DistanceFrom(const Point2D& other) const;
+    double DistanceFromLine(const Vector2D& lineStart, const Vector2D& lineEnd) const;
     Point2D<T> Rotate(const double angle);
-    void Clamp(const Point2D<T>& min, const Point2D<T>& max);
+    void Clamp(const Point2D& min, const Point2D& max);
     Point2D<T> Round(const Point2D_Round_Flag flag);
-    Point2D<T> Lerp(const Point2D<T>& other, const float t) const;
+    Point2D<T> Lerp(const Point2D& other, const float t) const;
     
     Point2D GetPoint() const;
     void SetPoint(T x, T y);
