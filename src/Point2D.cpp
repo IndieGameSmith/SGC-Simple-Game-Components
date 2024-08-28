@@ -154,8 +154,8 @@ double Game::Math::Point2D_DistanceFromLine(const Game::Math::Point2D<T>& p, con
 template <typename T>
 Game::Math::Point2D<T> Game::Math::Point2D_Rotate(Game::Math::Point2D<T>& Point, const double angle)
 {
-    double cosTheta = cos(angle);
-    double sinTheta = sin(angle);
+    double cosTheta = std::cos(angle);
+    double sinTheta = std::sin(angle);
     
     // This could be done by Matrix2f But I preferred to do it like this
     Game::Math::Point2D<T> RotatedPoint(
