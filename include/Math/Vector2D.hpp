@@ -13,7 +13,7 @@
 #define VECTOR2D_HPP_
 
 #include <iostream>
-#include "Matrix2f.hpp"
+#include "Matrix2D.hpp"
 
 namespace Game
 {
