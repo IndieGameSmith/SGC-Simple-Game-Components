@@ -15,7 +15,7 @@
 #include <iostream>
 #include <cmath>
 
-constexpr double TOLERANCE_VALUE = 1e-6;
+constexpr double VEC2D_TOLERANCE_VALUE = 1e-6;
 
 template <typename T>
 std::ostream& operator<<(std::ostream &str, Game::Math::Vector2D<T> const &v)
@@ -160,7 +160,7 @@ Game::Math::Vector2D<T> Game::Math::Vector2D<T> :: Normalize() const
     
     Vector2D<T> NormalizedVector;
     
-    if (std::abs(mag) < TOLERANCE_VALUE)
+    if (std::abs(mag) < VEC2D_TOLERANCE_VALUE)
     {
         NormalizedVector.x = NormalizedVector.y = 0.0f;
     }
@@ -356,7 +356,7 @@ Game::Math::Vector2D<T> Game::Math::Vec2D_Normalize(Game::Math::Vector2D<T>& v)
     
     Vector2D<T> NormalizedVector;
     
-    if (std::abs(mag) < TOLERANCE_VALUE)
+    if (std::abs(mag) < VEC2D_TOLERANCE_VALUE)
     {
         NormalizedVector.x = NormalizedVector.y = 0.0f;
     }
