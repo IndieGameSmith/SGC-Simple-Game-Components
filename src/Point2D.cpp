@@ -197,7 +197,6 @@ Game::Math::Point2D<T> Game::Math::Point2D_Round(Game::Math::Point2D<T>& p, cons
             
         p = RoundedPoint;
         return RoundedPoint;
-    }
 }
 
 template <typename T>
