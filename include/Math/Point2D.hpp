@@ -44,10 +44,10 @@ struct Point2D
     Point2D Normalize() const;
     double DistanceFrom(const Point2D& other) const;
     double DistanceFromLine(const Vector2D& lineStart, const Vector2D& lineEnd) const;
-    Point2D<T> Rotate(const double angle);
+    Point2D Rotate(const double angle);
     void Clamp(const Point2D& min, const Point2D& max);
-    Point2D<T> Round(const Point2D_Round_Flag flag);
-    Point2D<T> Lerp(const Point2D& other, const float t) const;
+    Point2D Round(const Point2D_Round_Flag& flag);
+    Point2D Lerp(const Point2D& other, const float t) const;
     
     Point2D GetPoint() const;
     void SetPoint(T x, T y);
@@ -162,7 +162,7 @@ void Point2D_Clamp(Point2D<T>& GivenPoint, const Point2D<T>& MinClampPoint, cons
  */
  
 template <typename T>
-Point2D<T> Point2D_Round(Point2D<T>& p, const Point2D_Round_Flag flag);
+Point2D<T> Point2D_Round(Point2D<T>& p, const Point2D_Round_Flag& flag);
 /** 
  *  \param p Given Point2D.
  *  \param flag Flag for rounding Point2D.
