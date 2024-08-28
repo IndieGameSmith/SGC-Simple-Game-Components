@@ -84,6 +84,81 @@ Game::Math::Point2D<T> Game::Math::Point2D<T> :: Normalize() const
 }
 
 template <typename T>
+double Game::Math::Point2D<T> :: DistanceFrom(const Game::Math::Point2D<T>& other) const
+{
+    double dx = other.x - x;
+    double dy = other.y - y;
+    return std::sqrt(dx * dx + dy * dy);
+}
+
+template <typename T>
+double Game::Math::Point2D<T> :: DistanceFromLine(const Game::Math::Vector2D<T>& lineStart, const Game::Math::Vector2D<T>& lineEnd) const
+{
+    Game::Math::Vector2D point(x, y);
+    Game::Math::Vector2D pointToLineVector = lineStart - point;
+    Game::Math::Vector2D lineDirection = lineEnd - lineStart;
+    lineDirection.Normalize();
+    Game::Math::Vector2D lineNormal = lineDirection.perpendicular();
+    return std::abs(pointToLineVector.DotProduct(lineNormal));
+}
+
+template <typename T>
+Game::Math::Point2D<T> Game::Math::Point2D<T> :: Rotate(const double angle)
+{
+    double cosTheta = std::cos(angle);
+    double sinTheta = std::sin(angle);
+    
+    // This could be done by Matrix2f But I preferred to do it like this
+    Game::Math::Point2D<T> RotatedPoint(
+                                          x * cosTheta - y * sinTheta,
+                                          x * sinTheta + y * cosTheta
+                                         );
+    *this = RotatedPoint;
+    return RotatedPoint;
+}
+
+template <typename T>
+void Game::Math::Point2D<T> :: Clamp(const Game::Math::Point2D<T>& min, const Game::Math::Point2D<T>& max)
+{
+    x = std::clamp(x, min.x, max.x);
+    y = std::clamp(y, min.y, max.y);
+}
+
+template <typename T>
+Game::Math::Point2D<T> Game::Math::Point2D<T> :: Round(const Game::Math::Point2D_Round_Flag& flag)
+{
+    Point2D<T> RoundedPoint;
+    switch (flag)
+    {
+        case Game::Math::Point2D_Round_Flag::ToFloor:
+            RoundedPoint.SetVec((std::floor(x)), (std::floor(y)));
+            break;
+            
+        case Game::Math::Point2D_Round_Flag::ToCeil:
+            RoundedPoint.SetVec((std::ceil(x)), (std::ceil(y)));
+            break;
+            
+        case Game::Math::Point2D_Round_Flag::ToNearest:
+            RoundedPoint.SetVec((std::round(x)), (std::round(y)));
+            break;
+            
+        default:
+            throw Game::Math::Exception::InvalidRoundFlag("Invalid Round Flag");
+    }
+            
+        *this = RoundedPoint;
+        return RoundedPoint;
+}
+
+template <typename T>
+Game::Math::Point2D<T> Game::Math::Point2D<T> :: Lerp(const Game::Math::Point2D<T>& other, const float t) const
+{
+    T px = x + (other.x - x) * t;
+    T py = y + (other.y - y) * t;
+    return Point2D<T>(px, py);
+}
+
+template <typename T>
 Game::Math::Point2D<T> Game::Math::Point2D<T> :: GetPoint() const
 {
     return Point2D<T>(x, y);
