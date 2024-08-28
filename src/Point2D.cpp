@@ -193,6 +193,7 @@ Game::Math::Point2D<T> Game::Math::Point2D_Round(Game::Math::Point2D<T>& p, cons
             
         default:
             throw Game::Math::Exception::InvalidRoundFlag("Invalid Round Flag");
+    }
             
         p = RoundedPoint;
         return RoundedPoint;
