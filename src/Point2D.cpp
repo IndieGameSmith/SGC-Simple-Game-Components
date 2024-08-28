@@ -98,7 +98,7 @@ double Game::Math::Point2D<T> :: DistanceFromLine(const Game::Math::Vector2D<T>&
     Game::Math::Vector2D pointToLineVector = lineStart - point;
     Game::Math::Vector2D lineDirection = lineEnd - lineStart;
     lineDirection.Normalize();
-    Game::Math::Vector2D lineNormal = lineDirection.perpendicular();
+    Game::Math::Vector2D lineNormal = lineDirection.Perpendicular();
     return std::abs(pointToLineVector.DotProduct(lineNormal));
 }
 
@@ -251,9 +251,9 @@ void Game::Math::Point2D_Clamp(Game::Math::Point2D<T>& Point, const Game::Math::
 template <typename T>
 Game::Math::Point2D<T> Game::Math::Point2D_Round(Game::Math::Point2D<T>& p, const Game::Math::Point2D_Round_Flag& flag)
 {
+    Point2D<T> RoundedPoint;
     switch (flag)
     {
-        Point2D<T> RoundedPoint;
         case Game::Math::Point2D_Round_Flag::ToFloor:
             RoundedPoint.SetPoint((std::floor(p.x)), (std::floor(p.y)));
 	    break;
