@@ -64,6 +64,26 @@ private:
     const char* message;
 };
 
+class MatrixIsSingular : public std::exception
+{
+
+public:
+    MatrixIsSingular(const char* p_message) : message(p_message) {};
+    
+    const char* what() const noexcept override
+    {
+        return message;
+    }
+    
+    ~MatrixIsSingular()
+    {
+        delete message;
+    }
+    
+private:
+    const char* message;
+};
+
 } // namespace Exception 
 
 } // namespace Math
