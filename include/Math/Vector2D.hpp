@@ -34,37 +34,37 @@ struct Vector2D
     Vector2D();
     Vector2D(T x, T y);
 
-	Vector2D operator+(const Vector2D& other) const;
-	Vector2D operator-(const Vector2D& other) const;
-	Vector2D operator*(const double scaler) const;
-	Vector2D operator*(const Game::Math::Matrix2f& matrix) const;
-	Vector2D operator/(const double scaler) const;
-	bool operator==(const Vector2D& other) const;
-	bool operator!=(const Vector2D& other) const;
-	bool operator<(const Vector2D& other) const;
-	bool operator>(const Vector2D& other) const;
-	bool operator<=(const Vector2D& other) const;
-	bool operator>=(const Vector2D& other) const;
+	Vector2D<T> operator+(const Vector2D<T>& other) const;
+	Vector2D<T> operator-(const Vector2D<T>& other) const;
+	Vector2D<T> operator*(const double scaler) const;
+	Vector2D<T> operator*(const Game::Math::Matrix2D<T>& matrix) const;
+	Vector2D<T> operator/(const double scaler) const;
+	bool operator==(const Vector2D<T>& other) const;
+	bool operator!=(const Vector2D<T>& other) const;
+	bool operator<(const Vector2D<T>& other) const;
+	bool operator>(const Vector2D<T>& other) const;
+	bool operator<=(const Vector2D<T>& other) const;
+	bool operator>=(const Vector2D<T>& other) const;
 	
-	Vector2D Add(const Vector2D& other) const;
-	Vector2D Sub(const Vector2D& other) const;
-	Vector2D Multiply(const double scaler) const;
-	Vector2D Divide(const double scaler) const;
-	double DotProduct(const Vector2D& other) const;
-	double CrossProduct(const Vector2D& other) const;
+	Vector2D<T> Add(const Vector2D<T>& other) const;
+	Vector2D<T> Sub(const Vector2D<T>& other) const;
+	Vector2D<T> Multiply(const double scaler) const;
+	Vector2D<T> Divide(const double scaler) const;
+	double DotProduct(const Vector2D<T>& other) const;
+	double CrossProduct(const Vector2D<T>& other) const;
 	double Magnitude() const;
-	Vector2D Normalize() const;
-	double DistanceFrom(const Vector2D& other) const;
-	double Angle(const Vector2D& other) const;
-	Vector2D ProjectOn(const Vector2D& Target) const;
-	Vector2D Reflect(const Vector2D& SurfaceNormal);
-	Vector2D Rotate(const double angle);
-	void Clamp(const Vector2D& min, const Vector2D& max);
-	Vector2D Round(const Vec2D_Round_Flag& flag);
-	Vector2D Lerp(const Vector2D& other, const float t) const;
-	Vector2D Perpendicular() const;
+	Vector2D<T> Normalize() const;
+	double DistanceFrom(const Vector2D<T>& other) const;
+	double Angle(const Vector2D<T>& other) const;
+	Vector2D<T> ProjectOn(const Vector2D<T>& Target) const;
+	Vector2D<T> Reflect(const Vector2D<T>& SurfaceNormal);
+	Vector2D<T> Rotate(const double angle);
+	void Clamp(const Vector2D<T>& min, const Vector2D<T>& max);
+	Vector2D<T> Round(const Vec2D_Round_Flag& flag);
+	Vector2D<T> Lerp(const Vector2D<T>& other, const float t) const;
+	Vector2D<T> Perpendicular() const;
 	
-	Vector2D GetVec() const;
+	Vector2D<T> GetVec() const;
 	void SetVec(T x, T y);
     
     T x, y;
@@ -150,7 +150,7 @@ Vector2D<T> Vec2D_Divide(const Vector2D<T>& v, const double scaler);
  *
  */
 template <typename T>
-Vector2D<T> Vec2D_MultipyByMatrix(const Vector2D<T>& v, const Game::Math::Matrix2f& mat);
+Vector2D<T> Vec2D_MultipyByMatrix(const Vector2D<T>& v, const Game::Math::Matrix2D<T>& mat);
 /**
  *  \param v Vector2D quantity.
  *  \param mat Matrix2f.
