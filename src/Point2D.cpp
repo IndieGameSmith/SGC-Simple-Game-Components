@@ -9,8 +9,8 @@
  *  \date 2024-08-25
  */
 
-#include "include/Maths/Point2D.hpp"
-#include "include/Utils/Exceptions/Math_Exception.hpp"
+#include "Maths/Point2D.hpp"
+#include "Utils/Exceptions/Math_Exception.hpp"
 
 #include <iostream>
 #include <cmath>
