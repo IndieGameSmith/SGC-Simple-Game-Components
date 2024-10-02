@@ -55,7 +55,7 @@ Game::Math::Vector2D<T> Game::Math::Vector2D<T> :: operator*(const double scaler
 }
 
 template <typename T>
-Game::Math::Vector2D<T> Game::Math::Vector2D<T>::operator*(const Matrix2f& matrix) const
+Game::Math::Vector2D<T> Game::Math::Vector2D<T>::operator*(const Matrix2D<T>& matrix) const
 {
     return Vector2D<T>(
         x * matrix.GetElement(0, 0) + y * matrix.GetElement(1, 0),
@@ -323,7 +323,7 @@ Game::Math::Vector2D<T> Game::Math::Vec2D_Divide(const Game::Math::Vector2D<T>& 
 }
 
 template <typename T>
-Game::Math::Vector2D<T> Game::Math::Vec2D_MultipyByMatrix(const Game::Math::Vector2D<T>& v, const Game::Math::Matrix2f& matrix)
+Game::Math::Vector2D<T> Game::Math::Vec2D_MultipyByMatrix(const Game::Math::Vector2D<T>& v, const Game::Math::Matrix2D<T>& matrix)
 {
     return Vector2D<T>(
         v.x * matrix.GetElement(0, 0) + v.y * matrix.GetElement(1, 0),
