@@ -1,3 +1,14 @@
+/** 
+ *  \file Vector2D.hpp
+ *  
+ *  \brief Header file for Vector2D of Numbers.
+ *
+ *  This supports Vector on 2 dimesionsal related functions.
+ *
+ *  \author IndieGameSmith
+ *  \date 2024-10-01
+ */
+
 #ifndef MATRIX_HPP
 #define MATRIX_HPP
 
