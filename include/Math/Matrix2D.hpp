@@ -45,8 +45,12 @@ namespace Game
             Matrix2x2<T> operator/(const T& scalar) const;
 
             // Comparison operators
-            bool operator==(const Matrix2x2<T>& other) const;
-            bool operator!=(const Matrix2x2<T>& other) const;
+            bool operator==(const Matrix2D<T>& other) const;
+            bool operator!=(const Matrix2D<T>& other) const;
+            bool operator<(const Matrix2D& other) const;
+         	bool operator>(const Matrix2D& other) const;
+        	bool operator<=(const Matrix2D& other) const;
+        	bool operator>=(const Matrix2D& other) const;
 
             // Additional matrix operations
             Matrix2x2<T> Add(const Matrix2x2<T>& other) const;
