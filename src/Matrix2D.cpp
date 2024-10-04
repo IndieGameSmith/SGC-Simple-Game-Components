@@ -15,9 +15,10 @@
 #include <iostream>
 #include <cmath>
 
-Game::Math::Matrix2f Game::Math::Matrix2f :: operator+(const Game::Math::Matrix2f& other)
+template <typename T>
+Game::Math::Matrix2D<T> Game::Math::Matrix2D<T> :: operator+(const Game::Math::Matrix2D<T>& other) const
 {
-    Game::Math::Matrix2f result;
+    Game::Math::Matrix2D<T> result;
     for (int i = 0; i < 2; ++i)
     {
         for (int j = 0; j < 2; ++j)
@@ -28,9 +29,10 @@ Game::Math::Matrix2f Game::Math::Matrix2f :: operator+(const Game::Math::Matrix2
     return result;
 }
 
-Game::Math::Matrix2f Game::Math::Matrix2f :: operator-(const Game::Math::Matrix2f& other)
+template <typename T>
+Game::Math::Matrix2D<T> Game::Math::Matrix2D<T> :: operator-(const Game::Math::Matrix2D<T>& other) const
 {
-    Game::Math::Matrix2f result;
+    Game::Math::Matrix2D<T> result;
     for (int i = 0; i < 2; ++i)
     {
         for (int j = 0; j < 2; ++j)
@@ -41,9 +43,10 @@ Game::Math::Matrix2f Game::Math::Matrix2f :: operator-(const Game::Math::Matrix2
     return result;
 }
 
-Game::Math::Matrix2f Game::Math::Matrix2f :: operator*(double scaler)
+template <typename T>
+Game::Math::Matrix2D<T> Game::Math::Matrix2D<T> :: operator*(const T& scaler) const
 {
-    Game::Math::Matrix2f result;
+    Game::Math::Matrix2D<T> result;
     for (int i = 0; i < 2; ++i)
     {
         for (int j = 0; j < 2; ++j)
@@ -54,9 +57,10 @@ Game::Math::Matrix2f Game::Math::Matrix2f :: operator*(double scaler)
     return result;
 }
 
-Game::Math::Matrix2f Game::Math::Matrix2f :: operator*(const Game::Math::Matrix2f& other)
+template <typename T>
+Game::Math::Matrix2D<T> Game::Math::Matrix2D<T> :: operator*(const Game::Math::Matrix2D<T>& other) const
 {
-    Game::Math::Matrix2f result;
+    Game::Math::Matrix2D<T> result;
     for (int i = 0; i < 2; ++i)
     {
         for (int j = 0; j < 2; ++j)
@@ -67,12 +71,13 @@ Game::Math::Matrix2f Game::Math::Matrix2f :: operator*(const Game::Math::Matrix2
     return result;
 }
 
-Game::Math::Matrix2f Game::Math::Matrix2f :: operator/(double scaler)
+template <typename T>
+Game::Math::Matrix2D<T> Game::Math::Matrix2D<T> :: operator/(const T& scaler) const
 {
     if (scaler == 0)
-        throw Exception::DivisionByZero("Can't be divided 0");
+          throw Exception::DivisionByZero("Can't be divided 0");
     
-    Game::Math::Matrix2f result;
+    Game::Math::Matrix2D<T> result;
     for (int i = 0; i < 2; ++i)
     {
         for (int j = 0; j < 2; ++j)
@@ -83,7 +88,8 @@ Game::Math::Matrix2f Game::Math::Matrix2f :: operator/(double scaler)
     return result;
 }
 
-bool Game::Math::Matrix2f :: operator==(const Game::Math::Matrix2f& other) const
+template <typename T>
+bool Game::Math::Matrix2D<T> :: operator==(const Game::Math::Matrix2D<T>& other) const
 {
     for (int i = 0; i < 2; ++i)
     {
@@ -98,14 +104,16 @@ bool Game::Math::Matrix2f :: operator==(const Game::Math::Matrix2f& other) const
     return true;
 }
 
-bool Game::Math::Matrix2f :: operator!=(const Game::Math::Matrix2f& other) const
+template <typename T>
+bool Game::Math::Matrix2D<T> :: operator!=(const Game::Math::Matrix2D<T>& other) const
 {
     return !(*this == other);
 }
 
-Game::Math::Matrix2f Game::Math::Matrix2f :: Add(const Game::Math::Matrix2f& other)
+template <typename T>
+Game::Math::Matrix2D<T> Game::Math::Matrix2D<T> :: Add(const Game::Math::Matrix2D<T>& other) const
 {
-    Game::Math::Matrix2f result;
+    Game::Math::Matrix2D<T> result;
     for (int i = 0; i < 2; ++i)
     {
         for (int j = 0; j < 2; ++j)
@@ -116,9 +124,10 @@ Game::Math::Matrix2f Game::Math::Matrix2f :: Add(const Game::Math::Matrix2f& oth
     return result;
 }
 
-Game::Math::Matrix2f Game::Math::Matrix2f :: Sub(const Game::Math::Matrix2f& other)
+template <typename T>
+Game::Math::Matrix2D<T> Game::Math::Matrix2D<T> :: Sub(const Game::Math::Matrix2D<T>& other) const
 {
-    Game::Math::Matrix2f result;
+    Game::Math::Matrix2D<T> result;
     for (int i = 0; i < 2; ++i)
     {
         for (int j = 0; j < 2; ++j)
@@ -129,9 +138,10 @@ Game::Math::Matrix2f Game::Math::Matrix2f :: Sub(const Game::Math::Matrix2f& oth
     return result;
 }
 
-Game::Math::Matrix2f Game::Math::Matrix2f :: Multiply(const double scaler)
+template <typename T>
+Game::Math::Matrix2D<T> Game::Math::Matrix2D<T> :: Multiply(const T& scaler) const
 {
-    Game::Math::Matrix2f result;
+    Game::Math::Matrix2D<T> result;
     for (int i = 0; i < 2; ++i)
     {
         for (int j = 0; j < 2; ++j)
@@ -142,9 +152,10 @@ Game::Math::Matrix2f Game::Math::Matrix2f :: Multiply(const double scaler)
     return result;
 }
 
-Game::Math::Matrix2f Game::Math::Matrix2f :: Multiply(Game::Math::Matrix2f& other)
+template <typename T>
+Game::Math::Matrix2D<T> Game::Math::Matrix2D<T> :: Multiply(const Game::Math::Matrix2D<T>& other) const
 {
-    Game::Math::Matrix2f result;
+    Game::Math::Matrix2D<T> result;
     for (int i = 0; i < 2; ++i)
     {
         for (int j = 0; j < 2; ++j)
@@ -155,12 +166,13 @@ Game::Math::Matrix2f Game::Math::Matrix2f :: Multiply(Game::Math::Matrix2f& othe
     return result;
 }
 
-Game::Math::Matrix2f Game::Math::Matrix2f :: Divide(const double scaler)
+template <typename T>
+Game::Math::Matrix2D<T> Game::Math::Matrix2D<T> :: Divide(const T& scaler) const
 {
     if (scaler == 0)
-        throw Game::Math::Exception::DivisionByZero("Can't be divided 0");
+       throw Game::Math::Exception::DivisionByZero("Can't be divided 0");
     
-    Game::Math::Matrix2f result;
+    Game::Math::Matrix2D<T> result;
     for (int i = 0; i < 2; ++i)
     {
         for (int j = 0; j < 2; ++j)
@@ -171,20 +183,22 @@ Game::Math::Matrix2f Game::Math::Matrix2f :: Divide(const double scaler)
     return result;
 }
 
-double Game::Math::Matrix2f :: Determinant()
+template <typename T>
+double Game::Math::Matrix2D<T> :: Determinant() const
 {
     return elements[0][0] * elements[1][1] - elements[0][1] * elements[1][0];
 }
 
-Game::Math::Matrix2f Game::Math::Matrix2f :: Inverse()
+template <typename T>
+Game::Math::Matrix2D<T> Game::Math::Matrix2D<T> :: Inverse() const
 {
-    double det = Determinant();
+    T det = Determinant();
     if (det == 0.0)
     {
         throw Game::Math::Exception::MatrixIsSingular("Matrix is singular");
     }
     
-    Matrix2f result;
+    Matrix2D<T> result;
     result.elements[0][0] = elements[1][1] / det;
     result.elements[0][1] = -elements[0][1] / det;
     result.elements[1][0] = -elements[1][0] / det;
@@ -192,117 +206,127 @@ Game::Math::Matrix2f Game::Math::Matrix2f :: Inverse()
     return result;
 }
 
-Game::Math::Matrix2f Game::Math::Matrix2f :: Transpose()
+template <typename T>
+Game::Math::Matrix2D<T> Game::Math::Matrix2D<T> :: Transpose() const
 {
-	Matrix2f result;
+	Matrix2D<T> result;
     result.elements[0][0] = elements[0][0];
     result.elements[0][1] = elements[1][0];
     result.elements[1][0] = elements[0][1];
     result.elements[1][1] = elements[1][1];
     return result;
 }
-	
-double Game::Math::Matrix2f :: GetElement(int row, int col) const
+
+template <typename T>
+T Game::Math::Matrix2D<T> :: GetElement(int row, int col) const
 {
     return elements[row][col];
 }
 
-void Game::Math::Matrix2f :: SetElement(int row, int col, double value)
+template <typename T>
+void Game::Math::Matrix2D<T> :: SetElement(int row, int col, T value)
 {
     elements[row][col] = value;
 }
 
-Game::Math::Matrix2f Game::Math :: Mat2f_Add(Game::Math::Matrix2f& mat1, Game::Math::Matrix2f& mat2)
+template <typename T>
+Game::Math::Matrix2D<T> Game::Math :: Mat2D_Add(const Game::Math::Matrix2D<T>& mat1, const Game::Math::Matrix2D<T>& mat2)
 {
-    Game::Math::Matrix2f result;
+    Game::Math::Matrix2D<T> result;
     for (int i = 0; i < 2; ++i)
     {
         for (int j = 0; j < 2; ++j)
         {
-            double val = mat1.GetElement(i, j) + mat2.GetElement(i, j);
+            T val = mat1.GetElement(i, j) + mat2.GetElement(i, j);
             result.SetElement(i, j, val);
         }
     }
     return result;
 }
 
-Game::Math::Matrix2f Game::Math :: Mat2f_Substract(Game::Math::Matrix2f& mat1, Game::Math::Matrix2f& mat2)
+template <typename T>
+Game::Math::Matrix2D<T> Game::Math :: Mat2D_Subtract(const Game::Math::Matrix2D<T>& mat1, const Game::Math::Matrix2D<T>& mat2)
 {
-    Game::Math::Matrix2f result;
+    Game::Math::Matrix2D<T> result;
     for (int i = 0; i < 2; ++i)
     {
         for (int j = 0; j < 2; ++j)
         {
-            double val = mat1.GetElement(i, j) - mat2.GetElement(i, j);
+            T val = mat1.GetElement(i, j) - mat2.GetElement(i, j);
             result.SetElement(i, j, val);
         }
     }
     return result;
 }
 
-Game::Math::Matrix2f Game::Math :: Mat2f_Multiply(Game::Math::Matrix2f& mat1, Game::Math::Matrix2f& mat2)
+template <typename T>
+Game::Math::Matrix2D<T> Game::Math :: Mat2D_Multiply(const Game::Math::Matrix2D<T>& mat1, const Game::Math::Matrix2D<T>& mat2)
 {
-    Game::Math::Matrix2f result;
+    Game::Math::Matrix2D<T> result;
     for (int i = 0; i < 2; ++i)
     {
         for (int j = 0; j < 2; ++j)
         {
-            double val = mat1.GetElement(i, j) * mat2.GetElement(i, j);
+            T val = mat1.GetElement(i, j) * mat2.GetElement(i, j);
             result.SetElement(i, j, val);
         }
     }
     return result;
 }
 
-Game::Math::Matrix2f Game::Math :: Mat2f_Multiply(Game::Math::Matrix2f& mat1, const double scaler)
+template <typename T>
+Game::Math::Matrix2D<T> Game::Math :: Mat2D_Multiply(const Game::Math::Matrix2D<T>& mat1, const T& scaler)
 {
-    Game::Math::Matrix2f result;
+    Game::Math::Matrix2D<T> result;
     for (int i = 0; i < 2; ++i)
     {
         for (int j = 0; j < 2; ++j)
         {
-            double val = mat1.GetElement(i, j) * scaler;
+            T val = mat1.GetElement(i, j) * scaler;
             result.SetElement(i, j, val);
         }
     }
     return result;
 }
 
-Game::Math::Matrix2f Game::Math :: Mat2f_Divide(Game::Math::Matrix2f& mat1, const double scaler)
+template <typename T>
+Game::Math::Matrix2D<T> Game::Math :: Mat2D_Divide(const Game::Math::Matrix2D<T>& mat1, const T& scaler)
 {
     if (scaler == 0)
-        throw Game::Math::Exception::DivisionByZero("Can't be divided by zero.");
+      throw Game::Math::Exception::DivisionByZero("Can't be divided by zero.");
         
-    Game::Math::Matrix2f result;
+    Game::Math::Matrix2D<T> result;
     for (int i = 0; i < 2; ++i)
     {
         for (int j = 0; j < 2; ++j)
         {
-            double val = mat1.GetElement(i, j) / scaler;
+            T val = mat1.GetElement(i, j) / scaler;
             result.SetElement(i, j, val);
         }
     }
     return result;
 }
 
-double Game::Math :: Mat2f_Determinant(Game::Math::Matrix2f& mat)
+template <typename T>
+double Game::Math :: Mat2D_Determinant(const Game::Math::Matrix2D<T>& mat)
 {
     return mat.GetElement(0, 0) * mat.GetElement(1, 1) - mat.GetElement(0, 1) * mat.GetElement(1, 0);
 }
 
-Game::Math::Matrix2f Game::Math::Mat2f_Inverse(Game::Math::Matrix2f& mat)
+template <typename T>
+Game::Math::Matrix2D<T> Game::Math::Mat2D_Inverse(const Game::Math::Matrix2D<T>& mat)
 {
-    double det = mat.Determinant();
+    T det = mat.Determinant();
     if (det == 0.0)
     {
-        throw Game::Math::Exception::MatrixIsSingular("Matrix is singular");
+       throw Game::Math::Exception::MatrixIsSingular("Matrix is singular");
     }
     
-    Matrix2f result;
-    double val1 = mat.GetElement(1, 1) / det;
-    double val2 = 0 - (mat.GetElement(0, 1) / det);
-    double val3 = 0 - (mat.GetElement(1, 0) / det);
-    double val4 = mat.GetElement(0, 0) / det;
+    Matrix2D<T> result;
+    T val1 = mat.GetElement(1, 1) / det;
+    T val2 = 0 - (mat.GetElement(0, 1) / det);
+    T val3 = 0 - (mat.GetElement(1, 0) / det);
+    T val4 = mat.GetElement(0, 0) / det;
     
     result.SetElement(0, 0, val1);
     result.SetElement(0, 1, val2);
@@ -311,19 +335,20 @@ Game::Math::Matrix2f Game::Math::Mat2f_Inverse(Game::Math::Matrix2f& mat)
     return result;
 }
 
-Game::Math::Matrix2f Game::Math::Mat2f_Transpose(Game::Math::Matrix2f& mat)
+template <typename T>
+Game::Math::Matrix2D<T> Game::Math::Mat2D_Transpose(const Game::Math::Matrix2D<T>& mat)
 {
-    double det = mat.Determinant();
+    T det = mat.Determinant();
     if (det == 0.0)
     {
         throw Game::Math::Exception::MatrixIsSingular("Matrix is singular");
     }
     
-    Matrix2f result;
-    double val1 = mat.GetElement(0, 0);
-    double val2 = mat.GetElement(1, 0);
-    double val3 = mat.GetElement(0, 1);
-    double val4 = mat.GetElement(1, 1);
+    Matrix2D<T> result;
+    T val1 = mat.GetElement(0, 0);
+    T val2 = mat.GetElement(1, 0);
+    T val3 = mat.GetElement(0, 1);
+    T val4 = mat.GetElement(1, 1);
     
     result.SetElement(0, 0, val1);
     result.SetElement(0, 1, val2);
@@ -332,7 +357,8 @@ Game::Math::Matrix2f Game::Math::Mat2f_Transpose(Game::Math::Matrix2f& mat)
     return result;
 }
 
-bool Game::Math :: Mat2f_IsEqual(Game::Math::Matrix2f& mat1, Game::Math::Matrix2f& mat2)
+template <typename T>
+bool Game::Math :: Mat2D_IsEqual(const Game::Math::Matrix2D<T>& mat1, const Game::Math::Matrix2D<T>& mat2)
 {
     for (int i = 0; i < 2; ++i)
     {
@@ -347,12 +373,14 @@ bool Game::Math :: Mat2f_IsEqual(Game::Math::Matrix2f& mat1, Game::Math::Matrix2
     return true;
 }
 
-bool Game::Math :: Mat2f_IsNotEqual(Game::Math::Matrix2f& mat1, Game::Math::Matrix2f& mat2)
+template <typename T>
+bool Game::Math :: Mat2D_IsNotEqual(const Game::Math::Matrix2D<T>& mat1, const Game::Math::Matrix2D<T>& mat2)
 {
-    return !(Game::Math::Mat2f_IsEqual(mat1, mat2));
+    return !(Game::Math::Mat2D_IsEqual(mat1, mat2));
 }
 
-std::ostream& operator<<(std::ostream& str, Game::Math::Matrix2f& mat)
+template <typename T>
+std::ostream& operator<<(std::ostream& str, Game::Math::Matrix2D<T>& mat)
 {
     str << "[ " << mat.GetElement(0, 0) << ", " << mat.GetElement(0, 1) << "\n  " << mat.GetElement(1, 0) << ", " << mat.GetElement(1, 1) << " ] " << "\n";
     return str;
