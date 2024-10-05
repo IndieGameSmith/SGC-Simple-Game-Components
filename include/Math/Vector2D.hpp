@@ -63,6 +63,7 @@ struct Vector2D
 	Vector2D<T> Round(const Vec2D_Round_Flag& flag);
 	Vector2D<T> Lerp(const Vector2D<T>& other, const float t) const;
 	Vector2D<T> Perpendicular() const;
+        bool IsEmpty() const;
 	
 	Vector2D<T> GetVec() const;
 	void SetVec(T x, T y);
