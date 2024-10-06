@@ -287,7 +287,7 @@ Game::Math::Vector2D<T> Game::Math::Vector2D<T> :: Translate(const T a, const T 
 template <typename T>
 bool Game::Math::Vector2D<T> :: IsEmpty() const
 {
-	return (*this.Magnitude() == 0.0f);
+	return (Magnitude() == 0.0f);
 }
 
 template <typename T>
