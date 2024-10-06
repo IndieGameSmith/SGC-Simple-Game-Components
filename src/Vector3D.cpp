@@ -20,7 +20,7 @@ constexpr double Vec3D_TOLERANCE_VALUE = 1e-6;
 template <typename T>
 std::ostream &operator<<(std::ostream &str, Game::Math::Vector3D<T> const& v)
 {
-	str << "[" << v.x << ", " << v.y << "," << v.z"]";
+	str << "[" << v.x << ", " << v.y << "," << v.z << "]";
 	return str;
 }
 
