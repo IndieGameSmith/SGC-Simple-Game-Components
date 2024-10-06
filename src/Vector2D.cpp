@@ -277,6 +277,14 @@ Game::Math::Vector2D<T> Game::Math::Vector2D<T> :: Perpendicular() const
 }
 
 template <typename T>
+Game::Math::Vector2D<T> Game::Math::Vector2D<T> :: Translate(const T a, const T b)
+{
+	Game::Math::Vector2D<T> TranslatedVector(*this.x + a,*this.y + b);
+	*this = TranslatedVector;
+	return TranslatedVector;
+}
+
+template <typename T>
 bool Game::Math::Vector2D<T> :: IsEmpty() const
 {
 	return (*this.Magnitude() == 0.0f);
@@ -409,6 +417,14 @@ Game::Math::Vector2D<T> Game::Math::Vec2D_ProjectOn(const Game::Math::Vector2D<T
     Vector2D<T> ProjectedVector = Game::Math::Vec2D_Multiply(Target_Normalized, DotProduct);
     
     return ProjectedVector;
+}
+
+template <typename T>
+Game::Math::Vector2D<T> Game::Math::Vec2D_Translate(Game::Math::Vector2D<T> Vector, const T a, const T b)
+{
+	Game::Math::Vector2D<T> TranslatedVector(Vector.x + a,Vector.y + b);
+	Vector = TranslatedVector;
+	return TranslatedVector;
 }
 
 template <typename T>
