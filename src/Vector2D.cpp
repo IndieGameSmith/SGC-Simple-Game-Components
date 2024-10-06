@@ -420,7 +420,7 @@ Game::Math::Vector2D<T> Game::Math::Vec2D_ProjectOn(const Game::Math::Vector2D<T
 }
 
 template <typename T>
-Game::Math::Vector2D<T> Game::Math::Vec2D_Translate(Game::Math::Vector2D<T> Vector, const T a, const T b)
+Game::Math::Vector2D<T> Game::Math::Vec2D_Translate(Game::Math::Vector2D<T>& Vector, const T a, const T b)
 {
 	Vector2D<T> TranslatedVector(Vector.x + a,Vector.y + b);
 	Vector = TranslatedVector;
