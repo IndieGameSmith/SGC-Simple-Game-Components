@@ -50,7 +50,7 @@ namespace Game
             void SetElement(int row, int col, T value);
 
         private:
-            T elements[3][3];
+            T element[3][3];
         };
 
         // Free functions for mathematical operations
