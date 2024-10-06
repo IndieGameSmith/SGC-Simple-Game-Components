@@ -55,8 +55,9 @@ namespace Game
             T Determinant() const;
             Matrix2D<T> Inverse() const;
             Matrix2D<T> Transpose() const;
+            bool IsEmpty() const;
 
-            // Element access
+           // Element access
             T GetElement(int row, int col) const;
             void SetElement(int row, int col, T value);
 
