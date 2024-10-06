@@ -118,6 +118,14 @@ Game::Math::Point2D<T> Game::Math::Point2D<T> :: Rotate(const double angle)
 }
 
 template <typename T>
+Game::Math::Point2D<T> Game::Math::Point2D<T> :: Translate(const T a, const T b)
+{
+	Game::Math::Point2D<T> TranslatedPoint(*this.x + a,*this.y + b);
+	*this = TranslatedPoint;
+	return TranslatedPoint;
+}
+
+template <typename T>
 void Game::Math::Point2D<T> :: Clamp(const Game::Math::Point2D<T>& min, const Game::Math::Point2D<T>& max)
 {
     x = std::clamp(x, min.x, max.x);
@@ -239,6 +247,14 @@ Game::Math::Point2D<T> Game::Math::Point2D_Rotate(Game::Math::Point2D<T>& Point,
                                          );
     Point = RotatedPoint;
     return RotatedPoint;
+}
+
+template <typename T>
+Game::Math::Point2D<T> Game::Math::Point2D_Translate(Game::Math::Point2D<T> Point, const T a, const T b)
+{
+	Game::Math::Point2D<T> TranslatedPoint(Point.x + a,Point.y + b);
+	Point = TranslatedPoint;
+	return TranslatedPoint;
 }
 
 template <typename T>
