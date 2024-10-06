@@ -73,13 +73,13 @@ Game::Math::Vector3D<T> Game::Math::Vector3D<T>::operator/(const double scaler) 
 template <typename T>
 bool Game::Math::Vector3D<T>::operator==(const Vector3D<T> &other) const
 {
-	return x == other.x && y == other.y, z == other.z;
+	return x == other.x && y == other.y && z == other.z;
 }
 
 template <typename T>
 bool Game::Math::Vector3D<T>::operator!=(const Vector3D<T> &other) const
 {
-	return !(x == other.x && y == other.y, z == other.z);
+	return !(x == other.x && y == other.y && z == other.z);
 }
 
 template <typename T>
@@ -559,13 +559,13 @@ Game::Math::Vector3D<T> Game::Math::Vec3D_Lerp(const Game::Math::Vector3D<T> &st
 template <typename T>
 bool Game::Math::Vec3D_IsEqual(const Game::Math::Vector3D<T>& v1, const Game::Math::Vector3D<T>& v2)
 {
-	return v1.x == v2.x && v1.y == v2.y, v1.z == v2.z;
+	return v1.x == v2.x && v1.y == v2.y && v1.z == v2.z;
 }
 
 template <typename T>
 bool Game::Math::Vec3D_IsNotEqual(const Game::Math::Vector3D<T>& v1, const Game::Math::Vector3D<T>& v2)
 {
-	return !(v1.x == v2.x && v1.y == v2.y, v1.z == v2.z);
+	return !(v1.x == v2.x && v1.y == v2.y && v1.z == v2.z);
 }
 
 template <typename T>
