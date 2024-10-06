@@ -292,10 +292,10 @@ Game::Math::Vector3D<T> Game::Math::Vector3D<T>::Round(const Game::Math::Vec3D_R
 template <typename T>
 Game::Math::Vector3D<T> Game::Math::Vector3D<T>::Lerp(const Game::Math::Vector3D<T> &other, const float t) const
 {
-	T x = x + (other.x - x) * t;
-	T y = y + (other.y - y) * t;
-	T z = z + (other.z - z) * t;
-	return Vector3D<T>(x, y);
+	T px = x + (other.x - x) * t;
+	T py = y + (other.y - y) * t;
+	T pz = z + (other.z - z) * t;
+	return Vector3D<T>(px, py, pz);
 }
 
 template <typename T>
