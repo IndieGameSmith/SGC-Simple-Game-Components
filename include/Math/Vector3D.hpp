@@ -32,7 +32,7 @@ template <typename T>
 struct Vector3D
 {
     Vector3D();
-    Vector3D(T x, T y);
+    Vector3D(T x, T y, T z);
 
 	Vector3D<T> operator+(const Vector3D<T>& other) const;
 	Vector3D<T> operator-(const Vector3D<T>& other) const;
@@ -67,7 +67,7 @@ struct Vector3D
 	bool IsEmpty() const;
 	
 	Vector3D<T> GetVec() const;
-	void SetVec(T x, T y, T z);
+	void SetVec(const T x, const T y, const T z);
     
     T x, y, z;
 };
