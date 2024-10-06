@@ -59,10 +59,12 @@ struct Vector3D
 	Vector3D<T> ProjectOn(const Vector3D<T>& Target) const;
 	Vector3D<T> Reflect(const Vector3D<T>& SurfaceNormal);
 	Vector3D<T> Rotate(const double angle);
+	Vector3D<T> Translate(const T a, const T b);
 	void Clamp(const Vector3D<T>& min, const Vector3D<T>& max);
 	Vector3D<T> Round(const Vec3D_Round_Flag& flag);
 	Vector3D<T> Lerp(const Vector3D<T>& other, const float t) const;
 	Vector3D<T> Perpendicular() const;
+	bool IsEmpty() const;
 	
 	Vector3D<T> GetVec() const;
 	void SetVec(T x, T y, T z);
@@ -286,6 +288,10 @@ Vector3D<T> Vec3D_Rotate(Vector3D<T>& v, const double angle);
  *
  *  \returns Returns Resulting Vector3D.
  */
+
+template <typename T>
+Vector3D<T> Vec3D_Translate(Vector3D<T> Vector, const T a, const T b);
+
 template <typename T>
 void Vec3D_Clamp(Vector3D<T>& GivenVector, const Vector3D<T>& MinClampVector, const Vector3D<T>& MaxClampVector);
 /** 
