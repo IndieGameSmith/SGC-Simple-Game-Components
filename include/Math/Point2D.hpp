@@ -45,6 +45,7 @@ struct Point2D
     double DistanceFrom(const Point2D<T>& other) const;
     double DistanceFromLine(const Vector2D<T>& lineStart, const Vector2D<T>& lineEnd) const;
     Point2D<T> Rotate(const double angle);
+	Point2D<T> Translate(const T a, const T b);
     void Clamp(const Point2D<T>& min, const Point2D<T>& max);
     Point2D<T> Round(const Point2D_Round_Flag& flag);
     Point2D<T> Lerp(const Point2D<T>& other, const float t) const;
@@ -150,6 +151,9 @@ Point2D<T> Point2D_Rotate(Point2D<T>& point, const double angle);
  *
  *  \returns Returns Resulting Point2D.
  */
+
+template <typename T>
+Point2D<T> Point2D_Translate(Point2D<T>& point, const T a, const T b);
  
 template <typename T>
 void Point2D_Clamp(Point2D<T>& GivenPoint, const Point2D<T>& MinClampPoint, const Point2D<T>& MaxClampPoint);
