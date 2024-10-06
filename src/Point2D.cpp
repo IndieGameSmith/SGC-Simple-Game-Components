@@ -9,7 +9,7 @@
  *  \date 2024-08-25
  */
 
-#include "Maths/Point2D.hpp"
+#include "Math/Point2D.hpp"
 #include "Utils/Exceptions/Math_Exception.hpp"
 
 #include <iostream>
@@ -250,7 +250,7 @@ Game::Math::Point2D<T> Game::Math::Point2D_Rotate(Game::Math::Point2D<T>& Point,
 }
 
 template <typename T>
-Game::Math::Point2D<T> Game::Math::Point2D_Translate(Game::Math::Point2D<T> Point, const T a, const T b)
+Game::Math::Point2D<T> Game::Math::Point2D_Translate(Game::Math::Point2D<T>& Point, const T a, const T b)
 {
 	Game::Math::Point2D<T> TranslatedPoint(Point.x + a,Point.y + b);
 	Point = TranslatedPoint;
