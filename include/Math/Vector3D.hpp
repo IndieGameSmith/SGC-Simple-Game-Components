@@ -67,7 +67,7 @@ struct Vector3D
 	bool IsEmpty() const;
 	
 	Vector3D<T> GetVec() const;
-	void SetVec(const T x, const T y, const T z);
+	void SetVec(T x, T y, T z);
     
     T x, y, z;
 };
