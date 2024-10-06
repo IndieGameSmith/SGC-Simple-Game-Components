@@ -142,7 +142,7 @@ double Game::Math::Vector3D<T>::DotProduct(const Game::Math::Vector3D<T> &other)
 template <typename T>
 Game::Math::Vector3D<T> Game::Math::Vector3D<T>::CrossProduct(const Game::Math::Vector3D<T> &other) const
 {
-	Vector3D result;
+	Vector3D<T> result;
 
 	result.x = y * other.z - z * other.y;
 	result.y = z * other.x - x * other.z;
