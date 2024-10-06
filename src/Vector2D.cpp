@@ -239,9 +239,9 @@ void Game::Math::Vector2D<T> :: Clamp(const Vector2D<T>& min, const Vector2D<T>&
 template <typename T>
 Game::Math::Vector2D<T> Game::Math::Vector2D<T> :: Round(const Game::Math::Vec2D_Round_Flag& flag)
 {
+    Vector2D<T> RoundedVector;
     switch (flag)
     {
-        Vector2D<T> RoundedVector;
         case Game::Math::Vec2D_Round_Flag::ToFloor:
             RoundedVector.SetVec((std::floor(x)), (std::floor(y)));
 	    break;
@@ -279,7 +279,7 @@ Game::Math::Vector2D<T> Game::Math::Vector2D<T> :: Perpendicular() const
 template <typename T>
 Game::Math::Vector2D<T> Game::Math::Vector2D<T> :: Translate(const T a, const T b)
 {
-	Game::Math::Vector2D<T> TranslatedVector(*this.x + a,*this.y + b);
+	Vector2D<T> TranslatedVector(x + a, y + b);
 	*this = TranslatedVector;
 	return TranslatedVector;
 }
@@ -422,7 +422,7 @@ Game::Math::Vector2D<T> Game::Math::Vec2D_ProjectOn(const Game::Math::Vector2D<T
 template <typename T>
 Game::Math::Vector2D<T> Game::Math::Vec2D_Translate(Game::Math::Vector2D<T> Vector, const T a, const T b)
 {
-	Game::Math::Vector2D<T> TranslatedVector(Vector.x + a,Vector.y + b);
+	Vector2D<T> TranslatedVector(Vector.x + a,Vector.y + b);
 	Vector = TranslatedVector;
 	return TranslatedVector;
 }
@@ -445,7 +445,7 @@ Game::Math::Vector2D<T> Game::Math::Vec2D_Rotate(Game::Math::Vector2D<T>& vector
     double cosTheta = cos(angle);
     double sinTheta = sin(angle);
     
-    // This could be done by Matrix2f But I preferred to do it like this
+    // This could be done by Matrix2D But I preferred to do it like this
     Game::Math::Vector2D<T> RotatedVector(
                                           vector.x * cosTheta - vector.y * sinTheta,
                                           vector.x * sinTheta + vector.y * cosTheta
@@ -464,9 +464,9 @@ void Game::Math::Vec2D_Clamp(Game::Math::Vector2D<T>& vector, const Game::Math::
 template <typename T>
 Game::Math::Vector2D<T> Game::Math::Vec2D_Round(Game::Math::Vector2D<T>& v, const Game::Math::Vec2D_Round_Flag flag)
 {
+    Vector2D<T> RoundedVector;
     switch (flag)
     {
-        Vector2D<T> RoundedVector;
         case Game::Math::Vec2D_Round_Flag::ToFloor:
             RoundedVector.SetVec((std::floor(v.x)), (std::floor(v.y)));
 	    break;
