@@ -9,7 +9,7 @@
  *  \date 2024-08-23
  */
 
-#include "Maths/Vector2D.hpp"
+#include "Math/Vector2D.hpp"
 #include "Utils/Exceptions/Math_Exception.hpp"
 
 #include <iostream>
@@ -181,6 +181,11 @@ double Game::Math::Vector2D<T> :: DistanceFrom(const Game::Math::Vector2D<T>& ot
 template <typename T>
 double Game::Math::Vector2D<T> :: Angle(const Game::Math::Vector2D<T>& other) const
 {
+    if (IsEmpty() == true || other.IsEmpty() == true)
+    {
+    	Game::Math::Exception::ZeroLengthVector("Vector can't be zero length");
+    }
+    
     double dotProduct = Game::Math::Vec2D_DotProduct(*this, other);
     double v1_magnitude = Game::Math::Vec2D_Magnitude(*this);
     double v2_magnitude = Game::Math::Vec2D_Magnitude(other);
@@ -193,6 +198,11 @@ double Game::Math::Vector2D<T> :: Angle(const Game::Math::Vector2D<T>& other) co
 template <typename T>
 Game::Math::Vector2D<T> Game::Math::Vector2D<T> :: ProjectOn(const Game::Math::Vector2D<T>& Target) const
 {
+    if (IsEmpty() == true || Target.IsEmpty() == true)
+    {
+    	Game::Math::Exception::ZeroLengthVector("Vector can't be zero length");
+    }
+    
     Game::Math::Vector2D<T> Target_Normalized = Game::Math::Vec2D_Normalize(Target);
 
     double DotProduct = Game::Math::Vec2D_DotProduct(*this, Target_Normalized);
@@ -205,6 +215,11 @@ Game::Math::Vector2D<T> Game::Math::Vector2D<T> :: ProjectOn(const Game::Math::V
 template <typename T>
 Game::Math::Vector2D<T> Game::Math::Vector2D<T> :: Reflect(const Game::Math::Vector2D<T>& SurfaceNormal)
 {
+    if (IsEmpty() == true || SurfaceNormal.IsEmpty() == true)
+    {
+    	Game::Math::Exception::ZeroLengthVector("Vector can't be zero length");
+    }
+    
     double DotProduct = Game::Math::Vec2D_DotProduct(*this, SurfaceNormal);
     Vector2D<T> ScaledVector = SurfaceNormal * 2.0f * DotProduct;
     
@@ -217,6 +232,11 @@ Game::Math::Vector2D<T> Game::Math::Vector2D<T> :: Reflect(const Game::Math::Vec
 template <typename T>
 Game::Math::Vector2D<T> Game::Math::Vector2D<T> :: Rotate(const double angle)
 {
+    if (IsEmpty() == true)
+    {
+    	Game::Math::Exception::ZeroLengthVector("Vector can't be zero length");
+    }
+    
     double cosTheta = std::cos(angle);
     double sinTheta = std::sin(angle);
     
@@ -398,6 +418,11 @@ double Game::Math::Vec2D_Distance(const Game::Math::Vector2D<T>& v1, const Game:
 template <typename T>
 double Game::Math::Vec2D_Angle(const Game::Math::Vector2D<T>& v1, const Game::Math::Vector2D<T>& v2)
 {
+    if (v1.IsEmpty() == true || v2.IsEmpty() == true)
+    {
+    	Game::Math::Exception::ZeroLengthVector("Vector can't be zero length");
+    }
+    
     double dotProduct = Game::Math::Vec2D_DotProduct(v1, v2);
     double v1_magnitude = Game::Math::Vec2D_Magnitude(v1);
     double v2_magnitude = Game::Math::Vec2D_Magnitude(v2);
@@ -410,6 +435,11 @@ double Game::Math::Vec2D_Angle(const Game::Math::Vector2D<T>& v1, const Game::Ma
 template <typename T>
 Game::Math::Vector2D<T> Game::Math::Vec2D_ProjectOn(const Game::Math::Vector2D<T>& Vector, const Game::Math::Vector2D<T>& Target)
 {
+    if (Vector.IsEmpty() == true || Target.IsEmpty() == true)
+    {
+    	Game::Math::Exception::ZeroLengthVector("Vector can't be zero length");
+    }
+    
     Game::Math::Vector2D<T> Target_Normalized = Game::Math::Vec2D_Normalize(Target);
 
     double DotProduct = Game::Math::Vec2D_DotProduct(Vector, Target_Normalized);
@@ -430,6 +460,11 @@ Game::Math::Vector2D<T> Game::Math::Vec2D_Translate(Game::Math::Vector2D<T>& Vec
 template <typename T>
 Game::Math::Vector2D<T> Game::Math::Vec2D_Reflect(Game::Math::Vector2D<T>& OrignalVector, const Game::Math::Vector2D<T>& SurfaceNormal)
 {
+    if (OrignalVector.IsEmpty() == true || SurfaceNormal.IsEmpty() == true)
+    {
+    	Game::Math::Exception::ZeroLengthVector("Vector can't be zero length");
+    }
+    
     double DotProduct = Game::Math::Vec2D_DotProduct(OrignalVector, SurfaceNormal);
     Vector2D<T> ScaledVector = SurfaceNormal * 2.0f * DotProduct;
     
@@ -442,6 +477,11 @@ Game::Math::Vector2D<T> Game::Math::Vec2D_Reflect(Game::Math::Vector2D<T>& Orign
 template <typename T>
 Game::Math::Vector2D<T> Game::Math::Vec2D_Rotate(Game::Math::Vector2D<T>& vector, const double angle)
 {
+    if (vector.IsEmpty() == true)
+    {
+    	Game::Math::Exception::ZeroLengthVector("Vector can't be zero length");
+    }
+    
     double cosTheta = cos(angle);
     double sinTheta = sin(angle);
     
@@ -518,4 +558,3 @@ bool Game::Math::Vec2D_IsLessThan(const Game::Math::Vector2D<T>& v1, const Game:
 {
     return v1.Magnitude() < v2.Magnitude();
 }
-
