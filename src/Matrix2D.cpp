@@ -9,8 +9,8 @@
  *  \date 2024-08-25
  */
 
-#include "Matrix2D.hpp"
-#include "Math_Exception.hpp"
+#include "Math/Matrix2D.hpp"
+#include "Utils/Exceptions/Math_Exception.hpp"
 
 #include <iostream>
 #include <cmath>
