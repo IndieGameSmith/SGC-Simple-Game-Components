@@ -166,7 +166,7 @@ Game::Math::Vector3D<T> Game::Math::Vector3D<T>::Normalize() const
 
 	if (std::abs(mag) < Vec3D_TOLERANCE_VALUE)
 	{
-		NormalizedVector.x = NormalizedVector.y = 0.0f;
+		NormalizedVector.x = NormalizedVector.y = Normalized.z = 0.0f;
 	}
 	NormalizedVector = Vector3D<T>(x / mag, y / mag, z / mag);
 
@@ -408,7 +408,7 @@ Game::Math::Vector3D<T> Game::Math::Vec3D_Normalize(Game::Math::Vector3D<T>& v)
 
 	if (std::abs(mag) < Vec3D_TOLERANCE_VALUE)
 	{
-		NormalizedVector.x = NormalizedVector.y = 0.0f;
+		NormalizedVector.x = NormalizedVector.y = NormalizedVector.z = 0.0f;
 	}
 	NormalizedVector = Vector3D<T>(v.x / mag, v.y / mag, v.z / mag);
 
