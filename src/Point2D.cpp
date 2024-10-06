@@ -120,7 +120,7 @@ Game::Math::Point2D<T> Game::Math::Point2D<T> :: Rotate(const double angle)
 template <typename T>
 Game::Math::Point2D<T> Game::Math::Point2D<T> :: Translate(const T a, const T b)
 {
-	Game::Math::Point2D<T> TranslatedPoint(*this.x + a,*this.y + b);
+	Game::Math::Point2D<T> TranslatedPoint(x + a, y + b);
 	*this = TranslatedPoint;
 	return TranslatedPoint;
 }
