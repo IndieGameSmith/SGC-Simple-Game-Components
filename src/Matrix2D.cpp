@@ -218,6 +218,22 @@ Game::Math::Matrix2D<T> Game::Math::Matrix2D<T> :: Transpose() const
 }
 
 template <typename T>
+bool Game::Math::Matrix2D<T> :: IsEmpty() const
+{
+    for (int i = 0; i < 3; i++)
+    {
+        for (int j = 0; j < 3; j++)
+        {
+            if (element[i][j] != 0.0f)
+            {
+                return false;
+            }
+        }
+    }
+    return true;
+}
+
+template <typename T>
 T Game::Math::Matrix2D<T> :: GetElement(int row, int col) const
 {
     return elements[row][col];
