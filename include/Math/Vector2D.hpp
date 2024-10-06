@@ -63,6 +63,7 @@ struct Vector2D
 	Vector2D<T> Round(const Vec2D_Round_Flag& flag);
 	Vector2D<T> Lerp(const Vector2D<T>& other, const float t) const;
 	Vector2D<T> Perpendicular() const;
+	Vector2D<T> Translate(const T a, const T b);
         bool IsEmpty() const;
 	
 	Vector2D<T> GetVec() const;
@@ -287,6 +288,11 @@ Vector2D<T> Vec2D_Rotate(Vector2D<T>& v, const double angle);
  *
  *  \returns Returns Resulting Vector2D.
  */
+
+template <typename T>
+Vector2D<T> Vec2D_Translate(Vector2D<T>& Vector, const T a, const T b);
+
+
 template <typename T>
 void Vec2D_Clamp(Vector2D<T>& GivenVector, const Vector2D<T>& MinClampVector, const Vector2D<T>& MaxClampVector);
 /** 
