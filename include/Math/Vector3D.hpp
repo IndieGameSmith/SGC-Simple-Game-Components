@@ -51,7 +51,7 @@ struct Vector3D
 	Vector3D<T> Multiply(const double scaler) const;
 	Vector3D<T> Divide(const double scaler) const;
 	double DotProduct(const Vector3D<T>& other) const;
-	double CrossProduct(const Vector3D<T>& other) const;
+	Vector3D<T> CrossProduct(const Vector3D<T>& other) const;
 	double Magnitude() const;
 	Vector3D<T> Normalize() const;
 	double DistanceFrom(const Vector3D<T>& other) const;
@@ -59,7 +59,7 @@ struct Vector3D
 	Vector3D<T> ProjectOn(const Vector3D<T>& Target) const;
 	Vector3D<T> Reflect(const Vector3D<T>& SurfaceNormal);
 	Vector3D<T> Rotate(const double angle);
-	Vector3D<T> Translate(const T a, const T b);
+	Vector3D<T> Translate(const T a, const T b, const T c);
 	void Clamp(const Vector3D<T>& min, const Vector3D<T>& max);
 	Vector3D<T> Round(const Vec3D_Round_Flag& flag);
 	Vector3D<T> Lerp(const Vector3D<T>& other, const float t) const;
@@ -290,7 +290,7 @@ Vector3D<T> Vec3D_Rotate(Vector3D<T>& v, const double angle);
  */
 
 template <typename T>
-Vector3D<T> Vec3D_Translate(Vector3D<T>& Vector, const T a, const T b);
+Vector3D<T> Vec3D_Translate(Vector3D<T>& Vector, const T a, const T b, const T c);
 
 template <typename T>
 void Vec3D_Clamp(Vector3D<T>& GivenVector, const Vector3D<T>& MinClampVector, const Vector3D<T>& MaxClampVector);
