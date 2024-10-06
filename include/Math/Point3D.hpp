@@ -33,7 +33,7 @@ template <typename T>
 struct Point3D
 {
     Point3D();
-    Point3D(T x, T y);
+    Point3D(T x, T y, T z);
 
     bool operator==(const Point3D<T>& other) const;
     bool operator!=(const Point3D<T>& other) const;
@@ -43,15 +43,15 @@ struct Point3D
     double Magnitude() const;
     Point3D<T> Normalize() const;
     double DistanceFrom(const Point3D<T>& other) const;
-    double DistanceFromLine(const Vector2D<T>& lineStart, const Vector2D<T>& lineEnd) const;
+    double DistanceFromLine(const Vector3D<T>& lineStart, const Vector3D<T>& lineEnd) const;
     Point3D<T> Rotate(const double angle);
-	Point3D<T> Translate(const T a, const T b);
+	Point3D<T> Translate(const T a, const T b, const T c);
     void Clamp(const Point3D<T>& min, const Point3D<T>& max);
     Point3D<T> Round(const Point3D_Round_Flag& flag);
     Point3D<T> Lerp(const Point3D<T>& other, const float t) const;
     
     Point3D<T> GetPoint() const;
-    void SetPoint(T x, T y);
+    void SetPoint(T x, T y, T z);
 
     T x, y, z;
 };
@@ -130,7 +130,7 @@ double Point3D_Distance(const Point3D<T>& p1, const Point3D<T>& p2);
  */
 
 template <typename T>
-double Point3D_DistanceFromLine(const Point3D<T>& point, const Vector2D<T>& lineStart, const Vector2D<T>& lineEnd);
+double Point3D_DistanceFromLine(const Point3D<T>& point, const Vector3D<T>& lineStart, const Vector3D<T>& lineEnd);
 /** 
  *  \param point Given Point3D.
  *  \param lineStart Start Point of line
@@ -153,7 +153,7 @@ Point3D<T> Point3D_Rotate(Point3D<T>& point, const double angle);
  */
 
 template <typename T>
-Point3D<T> Point3D_Translate(Point3D<T>& point, const T a, const T b);
+Point3D<T> Point3D_Translate(Point3D<T>& point, const T a, const T b, const T c);
  
 template <typename T>
 void Point3D_Clamp(Point3D<T>& GivenPoint, const Point3D<T>& MinClampPoint, const Point3D<T>& MaxClampPoint);
