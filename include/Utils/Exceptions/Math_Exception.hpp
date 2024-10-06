@@ -84,6 +84,26 @@ private:
     const char* message;
 };
 
+class ZeroLengthVector : public std::exception
+{
+
+public:
+    ZeroLengthVector(const char* p_message) : message(p_message) {};
+    
+    const char* what() const noexcept override
+    {
+        return message;
+    }
+    
+    ZeroLengthVector()
+    {
+        delete message;
+    }
+    
+private:
+    const char* message;
+};
+
 } // namespace Exception 
 
 } // namespace Math
