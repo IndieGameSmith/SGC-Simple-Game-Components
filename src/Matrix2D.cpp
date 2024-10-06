@@ -9,8 +9,8 @@
  *  \date 2024-08-25
  */
 
-#include "Maths/Matrix2D.hpp"
-#include "Utils/Exceptions/Math_Exception.hpp"
+#include "Matrix2D.hpp"
+#include "Math_Exception.hpp"
 
 #include <iostream>
 #include <cmath>
@@ -184,7 +184,7 @@ Game::Math::Matrix2D<T> Game::Math::Matrix2D<T> :: Divide(const T& scaler) const
 }
 
 template <typename T>
-double Game::Math::Matrix2D<T> :: Determinant() const
+T Game::Math::Matrix2D<T> :: Determinant() const
 {
     return elements[0][0] * elements[1][1] - elements[0][1] * elements[1][0];
 }
@@ -224,7 +224,7 @@ bool Game::Math::Matrix2D<T> :: IsEmpty() const
     {
         for (int j = 0; j < 3; j++)
         {
-            if (element[i][j] != 0.0f)
+            if (elements[i][j] != 0.0f)
             {
                 return false;
             }
@@ -324,7 +324,7 @@ Game::Math::Matrix2D<T> Game::Math :: Mat2D_Divide(const Game::Math::Matrix2D<T>
 }
 
 template <typename T>
-double Game::Math :: Mat2D_Determinant(const Game::Math::Matrix2D<T>& mat)
+T Game::Math :: Mat2D_Determinant(const Game::Math::Matrix2D<T>& mat)
 {
     return mat.GetElement(0, 0) * mat.GetElement(1, 1) - mat.GetElement(0, 1) * mat.GetElement(1, 0);
 }
