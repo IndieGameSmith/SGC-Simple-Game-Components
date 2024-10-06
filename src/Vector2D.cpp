@@ -277,6 +277,12 @@ Game::Math::Vector2D<T> Game::Math::Vector2D<T> :: Perpendicular() const
 }
 
 template <typename T>
+bool Game::Math::Vector2D<T> :: IsEmpty() const
+{
+	return (*this.Magnitude() == 0.0f);
+}
+
+template <typename T>
 Game::Math::Vector2D<T> Game::Math::Vector2D<T> :: GetVec() const
 {
     return Vector2D<T>(x, y);
