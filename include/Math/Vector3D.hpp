@@ -290,7 +290,7 @@ Vector3D<T> Vec3D_Rotate(Vector3D<T>& v, const double angle);
  */
 
 template <typename T>
-Vector3D<T> Vec3D_Translate(Vector3D<T> Vector, const T a, const T b);
+Vector3D<T> Vec3D_Translate(Vector3D<T>& Vector, const T a, const T b);
 
 template <typename T>
 void Vec3D_Clamp(Vector3D<T>& GivenVector, const Vector3D<T>& MinClampVector, const Vector3D<T>& MaxClampVector);
