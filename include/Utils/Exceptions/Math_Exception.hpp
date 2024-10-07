@@ -104,18 +104,18 @@ private:
     const char* message;
 };
 
-class InvalidNumber : public std::exception
+class InvalidArgumentException : public std::exception
 {
 
 public:
-    InvalidNumber(const char* p_message) : message(p_message) {};
+    InvalidArgumentException() char* p_message) : message(p_message) {};
     
     const char* what() const noexcept override
     {
         return message;
     }
     
-    ~InvalidNumber()
+    ~InvalidArgumentException()
     {
         delete message;
     }
