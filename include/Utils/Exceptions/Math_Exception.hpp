@@ -104,6 +104,26 @@ private:
     const char* message;
 };
 
+class InvalidNumber : public std::exception
+{
+
+public:
+    InvalidNumber(const char* p_message) : message(p_message) {};
+    
+    const char* what() const noexcept override
+    {
+        return message;
+    }
+    
+    ~InvalidNumber()
+    {
+        delete message;
+    }
+    
+private:
+    const char* message;
+};
+
 } // namespace Exception 
 
 } // namespace Math
