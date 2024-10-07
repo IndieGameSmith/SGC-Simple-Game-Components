@@ -1,9 +1,9 @@
 /** 
  *  \file Math_Utils.hpp
  *  
- *  \brief Source file for Vector2D.
+ *  \brief Source file for Utility Functions.
  *
- *  This supports Vector2D related functions.
+ *  This supports various utility functions.
  *
  *  \author IndieGameSmith
  *  \date 2024-08-23
@@ -13,6 +13,9 @@
 #define MATH_UTILS_HPP_
 
 #include <cmath>
+#include <random>
+
+#include "Utils/Exceptions/Math_Exception.hpp"
 
 namespace Game
 {
@@ -89,8 +92,63 @@ double DegreeToRadian(double degree)
 	return degree * (M_PI /180);
 }
 	
-// Trignometric Functions
+// Function to find logrithims
+double Log(double x, double base = M_E)
+{
+    if (x < 0 || base =< 0)
+    {
+        Game::Math::Exception::InvalidArgumentException("Invalid Number for logrithim function");
+    }
+    
+    return std::log(x) / std::log(base);
+}
 
+// Function to find exponential
+double Exponent(double base = M_E, double power)
+{
+	return std::pow(base, power);
+}
+
+// Function to Clamp 
+template <typename T>
+T Clamp(T value, T min = 0, T max = 1)
+{
+	if (min > max)
+	{
+	    Game::Math::Exception::InvalidArgumentException("Min can not be bigger than max");
+	}
+	
+	return std::clamp(value, min, max);
+}
+
+// Function to interpolate 
+template <typename T>
+T Lerp(T start, T end, float t)
+{
+	if (start == end)
+	{
+	    return start;
+	}
+	
+	return start + (end - start) * t;
+}
+
+// Function to genrate random number
+template <typename T>
+T GenrateRandom(T min, T max)
+{
+	if (min > max)
+	{
+	    Game::Math::Exception::InvalidArgumentException("Min can not be bigger than max");
+	}
+	
+	std::random_device rd;
+    std::mt19937 gen(rd());
+    std::uniform_int_distribution<> distr(min, max);
+    return distr(gen);
+}
+
+}
 	
 } // Math
 
