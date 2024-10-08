@@ -44,6 +44,26 @@ private:
     const char* message;
 };
 
+class QueryingDisplayModeFailed : public std::exception
+{
+
+public:
+    QueryingDisplayModeFailed(const char* p_message) : message(p_message) {};
+    
+    const char* what() const noexcept override 
+    {
+        return message;
+    }
+    
+    ~QueryingDisplayModeFailed()
+    {
+        delete message;
+    }
+    
+private:
+    const char* message;
+};
+
 } // namespace Exception 
 
 } // namespace Graphics
