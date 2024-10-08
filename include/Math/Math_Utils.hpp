@@ -95,7 +95,7 @@ double DegreeToRadian(double degree)
 // Function to find logrithims
 double Log(double x, double base = M_E)
 {
-    if (x < 0 || base =< 0)
+    if (x < 0 || base <= 0)
     {
         Game::Math::Exception::InvalidArgumentException("Invalid Number for logrithim function");
     }
