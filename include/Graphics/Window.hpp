@@ -11,7 +11,7 @@
 #define WINDOW_HPP_
 
 #include "SDL2/SDL.h"
-#include "Math.hpp"
+#include "Math/Math.hpp"
 
 namespace Game
 {
@@ -21,20 +21,53 @@ namespace Graphics
 class Window
 {
 public:
-    Window(const char* p_title, int p_w, int p_h)a;
+    // Constructor
+    Window(const char* p_title, int p_w, int p_h);
+    
+    // Display mode creation and configuration
+    SDL_DisplayMode CreateDisplayMode(int w, int h, int RefreshRate, Uint32 Format);
+    void SetDisplayMode(SDL_DisplayMode Mode);
     void Create(const char* p_title, int p_w, int p_h);
+    
+    // Window resizing and positioning
     void ResizeWindow(int w, int h);
     void MoveWindowTo(int x, int y);
     void CenterWindow();
-    void ToggleWindowVisiblitt();
+    void Restore();
+    
+    // Window properties
+    void SetWindowTitle(const char* p_title);
+    void SetWindowIcon(SDL_Surface* icon);
+    void SetWindowResizable(bool resizable);
+    void SetWindowOpacity(float opacity);
+    void SetWindowModal(bool modal);
+    void ToggleWindowVisiblity();
     void ToggleFullscreen();
     void ToggleBorder();
+    void ToggleMaximize();
+    void ToggleMinimize();
+    void RaiseWindow();
+    void LowerWindow();
+    void ShowMessageBox(const char* p_title, const char* message);
+    
+    // Window information
+    Math::Point2D GetWindowCenter() const;
+    Math::Pair GetWindowSize() const;
+    SDL_DisplayMode GetCurrentDisplayMode() const;
+    SDL_DisplayMode GetDisplayMode(int DisplayIndex, int ModeIndex) const;
+    Uint32 GetWindowFormat() const;
+    int GetRefreshRate() const;
+    bool IsWindowOpen() const;
+    bool HasError() const;
+    const char* GetLastError() const;
+    
+    // Window Destruction
     void Destroy();
     
-    Math::Pair GetWindowCenter();
 private:
     SDL_Window* window;
     Math::Point2D windowPos;
+    SDL_DisplayMode mode;
 };
 
 } // namepace Graphics
