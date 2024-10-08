@@ -142,7 +142,7 @@ T GenrateRandom(T min, T max)
 	    Game::Math::Exception::InvalidArgumentException("Min can not be bigger than max");
 	}
 	
-	std::random_device rd;
+    std::random_device rd;
     std::mt19937 gen(rd());
     std::uniform_int_distribution<> distr(min, max);
     return distr(gen);
