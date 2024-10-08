@@ -22,6 +22,7 @@ class Window
 {
 public:
     // Constructor
+    Window();
     Window(const char* p_title, int p_w, int p_h);
     
     // Display mode creation and configuration
