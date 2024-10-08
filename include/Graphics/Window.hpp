@@ -53,6 +53,7 @@ public:
     void Update();
 
     // Window information
+    SDL_Window* GetWindow();
     Math::Point2D<int> GetWindowCenter() const;
     Math::Pair<int, int> GetWindowSize() const;
     SDL_DisplayMode GetCurrentDisplayMode() const;
