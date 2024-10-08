@@ -18,7 +18,7 @@
 namespace Game 
 {
 
-namespace Math
+namespace Graphics
 {
 
 namespace Exception
@@ -46,7 +46,7 @@ private:
 
 } // namespace Exception 
 
-} // namespace Math
+} // namespace Graphics
 
 } // namespace Game
 
