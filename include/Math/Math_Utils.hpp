@@ -104,7 +104,7 @@ double Log(double x, double base = M_E)
 }
 
 // Function to find exponential
-double Exponent(double base = M_E, double power)
+double Exponent(double base = M_E, double power = 1)
 {
 	return std::pow(base, power);
 }
