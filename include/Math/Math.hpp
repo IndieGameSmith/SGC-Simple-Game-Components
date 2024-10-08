@@ -16,7 +16,7 @@
 #include "Point3D.hpp"
 #include "Matrix2D.hpp"
 #include "Matrix3D.hpp"
-#include "Math_Typedefs.hpp"
+#include "Math_Typedef.hpp"
 #include "Math_Utils.hpp"
 
 #endif // MATH_HPP_
