@@ -57,6 +57,7 @@ public:
     SDL_DisplayMode GetCurrentDisplayMode() const;
     SDL_DisplayMode GetDisplayMode(int DisplayIndex, int ModeIndex) const;
     Uint32 GetWindowFormat() const;
+    int GetWindowDisplayIndex() const;
     int GetRefreshRate() const;
     bool IsWindowOpen() const;
     bool HasError() const;
