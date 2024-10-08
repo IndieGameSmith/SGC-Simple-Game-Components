@@ -50,7 +50,8 @@ public:
     void RaiseWindow();
     void LowerWindow();
     void ShowMessageBox(const char* p_title, const char* message);
-    
+    void Update();
+
     // Window information
     Math::Point2D GetWindowCenter() const;
     Math::Pair GetWindowSize() const;
