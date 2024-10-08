@@ -27,6 +27,14 @@ Game::Graphics::Window :: Window(const char* p_title, int p_w, int p_h) : window
         FailMessage.append(SDL_GetError());
         Game::Graphics::Exception::WindowCreationFailed(FailMessage.c_str());
     }
+    
+    SDL_GetWindowPosition(window, &windowPos.x, &windowPos.y);
+    if (SDL_GetCurrentDisplayMode(0, &displayMode) < 0)
+    {
+        std::string FailMessage = "Failed to query display mode: ";
+        FailMessage.append(SDL_GetError());
+        Game::Graphics::Exception::QueryingDisplayModeFailed(FailMessage.c_str());
+    }
 }
 
 void Game::Graphics::Window :: Create(const char* p_title, int p_w, int p_h)
@@ -40,6 +48,14 @@ void Game::Graphics::Window :: Create(const char* p_title, int p_w, int p_h)
         FailMessage.append(SDL_GetError());
         Game::Graphics::Exception::WindowCreationFailed(FailMessage.c_str());
     }
+    
+    SDL_GetWindowPosition(window, &windowPos.x, &windowPos.y);
+    if (SDL_GetCurrentDisplayMode(0, &displayMode) < 0)
+    {
+        std::string FailMessage = "Failed to query display mode: ";
+        FailMessage.append(SDL_GetError());
+        Game::Graphics::Exception::QueryingDisplayModeFailed(FailMessage.c_str());
+    }
 }
 
 SDL_DisplayMode Game::Graphics::Window :: CreateDisplayMode(int w, int h, int RefreshRate, Uint32 Format)
@@ -51,5 +67,3 @@ SDL_DisplayMode Game::Graphics::Window :: CreateDisplayMode(int w, int h, int Re
     mode.format = Format;
     return mode;
 }
-
-
