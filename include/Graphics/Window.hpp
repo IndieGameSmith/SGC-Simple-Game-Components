@@ -71,6 +71,7 @@ private:
     SDL_Window* window;
     Math::Point2D<int> windowPos;
     SDL_DisplayMode displayMode;
+    bool isWindowModal;
 };
 
 } // namepace Graphics
