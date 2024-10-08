@@ -9,8 +9,8 @@
 
 #include "SDL2/SDL.h" 
 
-#include "Window.hpp"
-#include "Graphics_Exception.hpp"
+#include "Graphics/Window.hpp"
+#include "Utils/Exceptions/Graphics_Exception.hpp"
  
 Game::Graphics::Window :: Window()
 {
@@ -66,4 +66,21 @@ SDL_DisplayMode Game::Graphics::Window :: CreateDisplayMode(int w, int h, int Re
     mode.refresh_rate = RefreshRate;
     mode.format = Format;
     return mode;
+}
+
+void Game::Graphics::Window :: SetDisplayMode(SDL_DisplayMode mode)
+{
+    SDL_SetDisplayMode(window, mode.w, mode.h, mode.format);
+    Update();
+}
+
+void Game::Graphics::Window :: Update()
+{
+    SDL_GetWindowPosition(window, &windowPos.x, &windowPos.y);
+    if (SDL_GetCurrentDisplayMode(0, &displayMode) < 0)
+    {
+        std::string FailMessage = "Failed to query display mode: ";
+        FailMessage.append(SDL_GetError());
+        Game::Graphics::Exception::QueryingDisplayModeFailed(FailMessage.c_str());
+    }
 }
