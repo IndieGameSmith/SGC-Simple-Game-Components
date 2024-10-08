@@ -108,7 +108,7 @@ class InvalidArgumentException : public std::exception
 {
 
 public:
-    InvalidArgumentException() char* p_message) : message(p_message) {};
+    InvalidArgumentException(const char* p_message) : message(p_message) {};
     
     const char* what() const noexcept override
     {
