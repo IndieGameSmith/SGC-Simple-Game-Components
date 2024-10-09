@@ -18,6 +18,13 @@ namespace Game
 namespace Graphics
 {
 
+enum class MessageType
+{
+    ERROR,
+    WARRNING,
+    INFORMATION
+};
+
 class Window
 {
 public:
@@ -48,7 +55,7 @@ public:
     void ToggleMaximize();
     void ToggleMinimize();
     void RaiseWindow();
-    void ShowMessageBox(const char* p_title, const char* message);
+    void ShowMessageBox(const char* p_title, const char* message, MessageType mesaageType);
     void Update();
 
     // Window information
