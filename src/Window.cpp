@@ -70,7 +70,7 @@ SDL_DisplayMode Game::Graphics::Window :: CreateDisplayMode(int w, int h, int Re
 
 void Game::Graphics::Window :: SetDisplayMode(SDL_DisplayMode mode)
 {
-    SDL_SetDisplayMode(window, mode.w, mode.h, mode.format);
+    SDL_SetWindowDisplayMode(window, mode);
     Update();
 }
 
