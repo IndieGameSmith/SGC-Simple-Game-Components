@@ -55,7 +55,7 @@ public:
     void ToggleMaximize();
     void ToggleMinimize();
     void RaiseWindow();
-    void ShowMessageBox(const char* p_title, const char* message, MessageType mesaageType);
+    void ShowMessageBox(const char* p_title, const char* message, MessageType messageType);
     void Update();
 
     // Window information
