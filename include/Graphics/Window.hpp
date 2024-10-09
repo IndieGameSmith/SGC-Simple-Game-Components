@@ -21,7 +21,7 @@ namespace Graphics
 enum class MessageType
 {
     ERROR,
-    WARRNING,
+    WARNING,
     INFORMATION
 };
 
