@@ -225,3 +225,80 @@ void Game::Graphics::Window :: Update()
     }
 }
 
+SDL_Window* Game::Graphics::Window :: GetWindow() const 
+{
+    return window;
+}
+
+Uint32 Game::Graphics::Window :: GetWindowFlags() const
+{
+    return SDL_GetWindowFlags(window);
+}
+
+Game::Math::Point2D<int> Game::Graphics::Window :: GetWindowCenter() const
+{
+    Game::Math::Point2D<int> CentrePos, WindowSize;
+    SDL_GetWindowSize(window, &WindowSize.x, &WindowSize.y);
+    CentrePos.x = WindowSize.x / 2;
+    CentrePos.y = WindowSize.y / 2;
+    return CentrePos;
+}
+
+Game::Math::Pair<int, int> Game::Graphics::Window :: GetWindowSize() const
+{
+    Game::Math::Pair<int, int> WindowSize;
+    SDL_GetWindowSize(window, &WindowSize.first, &WindowSize.second);
+    return WindowSize;
+}
+
+SDL_DisplayMode Game::Graphics::Window ::GetCurrentDisplayMode() const
+{
+    int displayIndex = SDL_GetWindowDisplayIndex(0);
+    SDL_DisplayMode mode;
+    SDL_GetCurrentDisplayMode(displayIndex, &mode);
+    return mode;
+}
+
+SDL_DisplayMode Game::Graphics::Window ::GetDisplayMode(int displayIndex, int modeIndex) const
+{
+    SDL_DisplayMode mode;
+    SDL_GetDisplayMode(displayIndex, modeIndex, &mode);
+    return mode;
+}
+
+Uint32 Game::Graphics::Window :: GetWindowFormat() const
+{
+    SDL_DisplayMode mode = GetCurrentDisplayMode();
+    return mode.format;
+}
+
+int Game::Graphics::Window :: GetWindowDisplayIndex() const
+{
+    return SDL_GetWindowDisplayIndex(0);
+}
+
+int Game::Graphics::Window :: GetRefreshRate() const
+{
+    SDL_DisplayMode mode = GetCurrentDisplayMode();
+    return mode.refresh_rate;
+}
+
+bool Game::Graphics::Window :: IsWindowOpen() const
+{
+    return SDL_GetWindowFlags(window) & SDL_WINDOW_SHOWN;
+}
+
+bool Game::Graphics::Window :: HasError() const
+{
+    return SDL_GetError() != nullptr;
+}
+
+const char* Game::Graphics::Window :: GetLastError() const
+{
+    return SDL_GetError();
+}
+
+void Game::Graphics::Window :: Destroy()
+{
+    SDL_DestroyWindow(window);
+}
