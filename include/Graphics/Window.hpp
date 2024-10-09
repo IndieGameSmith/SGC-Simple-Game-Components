@@ -48,7 +48,6 @@ public:
     void ToggleMaximize();
     void ToggleMinimize();
     void RaiseWindow();
-    void LowerWindow();
     void ShowMessageBox(const char* p_title, const char* message);
     void Update();
 
