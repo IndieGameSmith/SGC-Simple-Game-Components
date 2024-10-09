@@ -147,8 +147,6 @@ T GenrateRandom(T min, T max)
     std::uniform_int_distribution<> distr(min, max);
     return distr(gen);
 }
-
-}
 	
 } // Math
 

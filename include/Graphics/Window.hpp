@@ -18,6 +18,13 @@ namespace Game
 namespace Graphics
 {
 
+enum class MessageType
+{
+    ERROR,
+    WARNING,
+    INFORMATION
+};
+
 class Window
 {
 public:
@@ -48,13 +55,14 @@ public:
     void ToggleMaximize();
     void ToggleMinimize();
     void RaiseWindow();
-    void LowerWindow();
-    void ShowMessageBox(const char* p_title, const char* message);
+    void ShowMessageBox(const char* p_title, const char* message, MessageType messageType);
     void Update();
 
     // Window information
-    Math::Point2D GetWindowCenter() const;
-    Math::Pair GetWindowSize() const;
+    SDL_Window* GetWindow() const;
+    Uint32 GetWindowFlags() const;
+    Math::Point2D<int> GetWindowCenter() const;
+    Math::Pair<int, int> GetWindowSize() const;
     SDL_DisplayMode GetCurrentDisplayMode() const;
     SDL_DisplayMode GetDisplayMode(int DisplayIndex, int ModeIndex) const;
     Uint32 GetWindowFormat() const;
@@ -69,8 +77,9 @@ public:
     
 private:
     SDL_Window* window;
-    Math::Point2D windowPos;
-    SDL_DisplayMode mode;
+    Math::Point2D<int> windowPos;
+    SDL_DisplayMode displayMode;
+    bool isWindowModal;
 };
 
 } // namepace Graphics
