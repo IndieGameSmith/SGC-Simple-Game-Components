@@ -268,18 +268,20 @@ SDL_DisplayMode Game::Graphics::Window ::GetDisplayMode(int displayIndex, int mo
 
 Uint32 Game::Graphics::Window :: GetWindowFormat() const
 {
-    SDL_DisplayMode mode = GetCurrentDisplayMode();
+    int displayIndex = GetWindowDisplayIndex();
+    SDL_DisplayMode mode = GetDisplayMode(displayIndex, 0);
     return mode.format;
 }
 
 int Game::Graphics::Window :: GetWindowDisplayIndex() const
 {
-    return SDL_GetWindowDisplayIndex(0);
+    return SDL_GetWindowDisplayIndex(window);
 }
 
 int Game::Graphics::Window :: GetRefreshRate() const
 {
-    SDL_DisplayMode mode = GetCurrentDisplayMode();
+    int displayIndex = GetWindowDisplayIndex();
+    SDL_DisplayMode mode = GetDisplayMode(displayIndex, 0);
     return mode.refresh_rate;
 }
 
