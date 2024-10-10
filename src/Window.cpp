@@ -17,6 +17,12 @@ Game::Graphics::Window :: Window()
     
 }
 
+Game::Graphics::Window :: ~Window()
+{
+    SDL_DestroyWindow(window);
+    window = nullptr;
+}
+
 Game::Graphics::Window :: Window(const char* p_title, int p_w, int p_h) : window(nullptr)
 {
     window = SDL_CreateWindow(p_title, SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, p_w, p_h, SDL_WINDOW_SHOWN);
@@ -309,4 +315,5 @@ const char* Game::Graphics::Window :: GetLastError() const
 void Game::Graphics::Window :: Destroy()
 {
     SDL_DestroyWindow(window);
-}
+    window = nullptr;
+ }
