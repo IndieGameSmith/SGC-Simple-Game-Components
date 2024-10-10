@@ -31,6 +31,8 @@ public:
     // Constructor
     Window();
     Window(const char* p_title, int p_w, int p_h);
+    // Destructor
+    ~Window();
     
     // Display mode creation and configuration
     SDL_DisplayMode CreateDisplayMode(int w, int h, int RefreshRate, Uint32 Format);
