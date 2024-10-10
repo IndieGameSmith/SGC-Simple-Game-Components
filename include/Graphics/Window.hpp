@@ -18,6 +18,9 @@ namespace Game
 namespace Graphics
 {
 
+using DisplayMode = SDL_DisplayMode;
+using WindowHandle = SDL_Window*;
+
 enum class MessageType
 {
     ERROR,
