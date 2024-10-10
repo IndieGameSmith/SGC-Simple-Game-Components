@@ -266,6 +266,14 @@ SDL_DisplayMode Game::Graphics::Window ::GetDisplayMode(int displayIndex, int mo
     return mode;
 }
 
+SDL_DisplayMode Game::Graphics::Window :: GetWindowDisplayMode() const
+{
+    int displayIndex = GetWindowDisplayIndex();
+    SDL_DisplayMode mode = GetDisplayMode(displayIndex, 0);
+    return mode;
+}
+
+
 Uint32 Game::Graphics::Window :: GetWindowFormat() const
 {
     int displayIndex = GetWindowDisplayIndex();
