@@ -21,6 +21,26 @@ namespace Graphics
 using DisplayMode = SDL_DisplayMode;
 using WindowHandle = SDL_Window*;
 
+enum class WindowFlags : uint32_t
+{
+    None = 0,
+    Fullscreen = SDL_WINDOW_FULLSCREEN,
+    FullscreenDesktop = SDL_WINDOW_FULLSCREEN_DESKTOP,
+    OpenGL = SDL_WINDOW_OPENGL,   
+
+    VSync = SDL_WINDOW_VSYNC,
+    Resizable = SDL_WINDOW_RESIZABLE,
+    Minimized = SDL_WINDOW_MINIMIZED,
+    Maximized = SDL_WINDOW_MAXIMIZED,
+    InputGrabbed = SDL_WINDOW_INPUT_GRABBED,   
+
+    Borderless = SDL_WINDOW_BORDERLESS,
+    Hidden = SDL_WINDOW_HIDDEN,
+    Overlapped = SDL_WINDOW_OVERLAPPED,
+    AllowHighDPI = SDL_WINDOW_ALLOW_HIGHDPI,
+    FullscreenMaximized = SDL_WINDOW_FULLSCREEN_DESKTOP | SDL_WINDOW_MAXIMIZED
+};
+
 enum class MessageType
 {
     ERROR,
