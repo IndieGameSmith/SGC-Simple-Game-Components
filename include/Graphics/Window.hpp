@@ -65,6 +65,7 @@ public:
     Math::Pair<int, int> GetWindowSize() const;
     SDL_DisplayMode GetCurrentDisplayMode() const;
     SDL_DisplayMode GetDisplayMode(int DisplayIndex, int ModeIndex) const;
+    SDL_DisplayMode GetWindowDisplayMode() const;
     Uint32 GetWindowFormat() const;
     int GetWindowDisplayIndex() const;
     int GetRefreshRate() const;
