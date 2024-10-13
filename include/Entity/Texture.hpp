@@ -28,9 +28,9 @@ public:
 	
 	SDL_Texture* LoadTextureFromFile(SDL_Renderer* p_renderer, const char* p_path);
 	
-	int GetWidth();
-	int GetHeight();
-	SDL_Texture* GetSDLtexture();
+	int GetWidth() const;
+	int GetHeight() const;
+	SDL_Texture* GetSDLtexture() const;
 	
 private:
 	SDL_Texture* texture;
