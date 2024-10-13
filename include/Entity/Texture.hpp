@@ -11,7 +11,7 @@
 namespace Game
 {
     
-namespace Graphics
+namespace Entity
 {
     
 class Texture
