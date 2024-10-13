@@ -1,7 +1,7 @@
 
 #include "SDL2/SDL.h"
 
-#include "FPS.hpp"
+#include "Mechanics/FPS.hpp"
 
 Game::Mechanics::FPS :: FPS(int p_fps)
 {
