@@ -1,16 +1,16 @@
 #ifndef TEXTURE_CPP_
 #define TEXTURE_CPP_
 
-#include "Texture.hpp"
-#include "Vector2D.cpp"
+#include "Entity/Texture.hpp"
+#include "Math/Vector2D.cpp"
 
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL_ttf.h>
 
-Game::Graphics::Texture :: Texture(){}
+Game::Entity::Texture :: Texture(){}
 
-Game::Graphics::Texture :: Texture(SDL_Renderer* p_renderer, const char* p_path)
+Game::Entity::Texture :: Texture(SDL_Renderer* p_renderer, const char* p_path)
 {
 	SDL_Surface* textureSurface = IMG_Load(p_path);
 	if (textureSurface == nullptr)
@@ -35,7 +35,7 @@ Game::Graphics::Texture :: Texture(SDL_Renderer* p_renderer, const char* p_path)
     }
 }
 
-Game::Graphics::Texture :: Texture(SDL_Texture* p_tex)
+Game::Entity::Texture :: Texture(SDL_Texture* p_tex)
 {
 	texture = p_tex;
 	if (SDL_QueryTexture(texture, nullptr, nullptr, &width, &height) != 0)
@@ -45,7 +45,7 @@ Game::Graphics::Texture :: Texture(SDL_Texture* p_tex)
     }
 }
 
-Game::Graphics::Texture :: ~Texture()
+Game::Entity::Texture :: ~Texture()
 {
 	if (texture != nullptr)
 	{
@@ -54,7 +54,7 @@ Game::Graphics::Texture :: ~Texture()
 	texture = nullptr;
 }
 
-void Game::Graphics::Texture :: LoadFromFile(SDL_Renderer* p_renderer, const char* p_path)
+void Game::Entity::Texture :: LoadFromFile(SDL_Renderer* p_renderer, const char* p_path)
 {
 	SDL_Surface* textureSurface = IMG_Load(p_path);
 	if (textureSurface == nullptr)
@@ -79,7 +79,7 @@ void Game::Graphics::Texture :: LoadFromFile(SDL_Renderer* p_renderer, const cha
     }
 }
 
-void Game::Graphics::Texture :: LoadTexture(SDL_Texture* p_tex)
+void Game::Entity::Texture :: LoadTexture(SDL_Texture* p_tex)
 {
 	texture = p_tex;
 	if (SDL_QueryTexture(texture, nullptr, nullptr, &width, &height) != 0)
@@ -89,7 +89,7 @@ void Game::Graphics::Texture :: LoadTexture(SDL_Texture* p_tex)
     }
 }
 
-void Game::Graphics::Texture :: Unload()
+void Game::Entity::Texture :: Unload()
 {
 	if (texture != nullptr)
 	{
@@ -98,7 +98,7 @@ void Game::Graphics::Texture :: Unload()
 	texture = nullptr;
 }
 
-SDL_Texture* Game::Graphics::Texture :: LoadTextureFromFile(SDL_Renderer* p_renderer, const char* p_path)
+SDL_Texture* Game::Entity::Texture :: LoadTextureFromFile(SDL_Renderer* p_renderer, const char* p_path)
 {
 	SDL_Surface* textureSurface = IMG_Load(p_path);
 	if (textureSurface == nullptr)
@@ -118,17 +118,17 @@ SDL_Texture* Game::Graphics::Texture :: LoadTextureFromFile(SDL_Renderer* p_rend
 	return tex;
 }
 
-int Game::Graphics::Texture :: GetWidth()
+int Game::Entity::Texture :: GetWidth()
 {
 	return width;
 }
 
-int Game::Graphics::Texture :: GetHeight()
+int Game::Entity::Texture :: GetHeight()
 {
 	return height;
 }
 
-SDL_Texture* Game::Graphics::Texture :: GetSDLtexture()
+SDL_Texture* Game::Entity::Texture :: GetSDLtexture()
 {
 	return texture;
 }
