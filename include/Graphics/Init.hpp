@@ -47,6 +47,13 @@ bool Init()
     return true;
 }
 
+void Quit()
+{
+    SDL_Quit();
+    IMG_Quit();
+    TTF_Quit();
+}
+
 } // Graphics
 
 } // Game
