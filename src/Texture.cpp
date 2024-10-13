@@ -118,17 +118,17 @@ SDL_Texture* Game::Entity::Texture :: LoadTextureFromFile(SDL_Renderer* p_render
 	return tex;
 }
 
-int Game::Entity::Texture :: GetWidth()
+int Game::Entity::Texture :: GetWidth() const
 {
 	return width;
 }
 
-int Game::Entity::Texture :: GetHeight()
+int Game::Entity::Texture :: GetHeight() const
 {
 	return height;
 }
 
-SDL_Texture* Game::Entity::Texture :: GetSDLtexture()
+SDL_Texture* Game::Entity::Texture :: GetSDLtexture() const
 {
 	return texture;
 }
