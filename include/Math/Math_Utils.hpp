@@ -118,7 +118,16 @@ T Clamp(T& value, T min = 0, T max = 1)
 	    Game::Math::Exception::InvalidArgumentException("Min can not be bigger than max");
 	}
 	
-	return std::clamp(value, min, max);
+	if (value < min)
+	{
+	    value = min;
+	}
+	else (value > max)
+        {
+	    value = max;
+	}
+	
+	return value;
 }
 
 // Function to interpolate 
