@@ -122,10 +122,11 @@ T Clamp(T& value, T min = 0, T max = 1)
 	{
 	    value = min;
 	}
-	else (value > max)
+	else if (value > max)
         {
 	    value = max;
 	}
+	else {}
 	
 	return value;
 }
