@@ -23,11 +23,11 @@ namespace Math
 {
 	
 // Function to calculate the factorial of a number
-int factorial(int n) {
+int Factorial(int n) {
     if (n == 0) {
         return 1;
     } else {
-        return n * factorial(n - 1);
+        return n * Factorial(n - 1);
     }
 }
 
@@ -111,7 +111,7 @@ double Exponent(double base = M_E, double power = 1)
 
 // Function to Clamp 
 template <typename T>
-T Clamp(T value, T min = 0, T max = 1)
+T Clamp(T& value, T min = 0, T max = 1)
 {
 	if (min > max)
 	{
