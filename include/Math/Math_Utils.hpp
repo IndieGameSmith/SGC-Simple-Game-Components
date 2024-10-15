@@ -147,6 +147,13 @@ T GenrateRandom(T min, T max)
     std::uniform_int_distribution<> distr(min, max);
     return distr(gen);
 }
+
+// Function to negate a value
+template <typename T>
+T Negate(T val)
+{
+	return 0 - val;
+}
 	
 } // Math
 
