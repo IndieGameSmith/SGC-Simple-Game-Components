@@ -6,7 +6,7 @@
 #include <SDL2/SDL_ttf.h>
 #include <iostream>
 
-#include "Vector2D.hpp"
+#include "Math/Vector2D.hpp"
 
 namespace Game
 {
