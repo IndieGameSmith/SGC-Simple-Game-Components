@@ -1,6 +1,3 @@
-#ifndef TEXTURE_CPP_
-#define TEXTURE_CPP_
-
 #include "Entity/Texture.hpp"
 #include "Math/Vector2D.hpp"
 
@@ -149,5 +146,3 @@ void Game::Entity::Texture :: Render(SDL_Renderer* renderer, Math::Vector2D<int>
 
 	SDL_RenderCopyEx(renderer, texture, &src, &dst, angle, center, flip);
 }
-
-#endif
