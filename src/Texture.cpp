@@ -2,7 +2,7 @@
 #define TEXTURE_CPP_
 
 #include "Entity/Texture.hpp"
-#include "Math/Vector2D.cpp"
+#include "Math/Vector2D.hpp"
 
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
@@ -29,7 +29,7 @@ Game::Entity::Texture :: Texture(SDL_Renderer* p_renderer, const char* p_path)
 	
 	if (SDL_QueryTexture(texture, nullptr, nullptr, &width, &height) != 0)
 	{
-        std::cerr << "Failed to query texture dimensions: " << SDL_GetError() << std::endl;
+        std::cout << "Failed to query texture dimensions: " << SDL_GetError() << std::endl;
         texture = nullptr;
         return;
     }
@@ -40,7 +40,7 @@ Game::Entity::Texture :: Texture(SDL_Texture* p_tex)
 	texture = p_tex;
 	if (SDL_QueryTexture(texture, nullptr, nullptr, &width, &height) != 0)
 	{
-        std::cerr << "Failed to query texture dimensions: " << SDL_GetError() << std::endl;
+        std::cout << "Failed to query texture dimensions: " << SDL_GetError() << std::endl;
         return;
     }
 }
@@ -73,7 +73,7 @@ void Game::Entity::Texture :: LoadFromFile(SDL_Renderer* p_renderer, const char*
 	
 	if (SDL_QueryTexture(texture, nullptr, nullptr, &width, &height) != 0)
 	{
-        std::cerr << "Failed to query texture dimensions: " << SDL_GetError() << std::endl;
+        std::cout << "Failed to query texture dimensions: " << SDL_GetError() << std::endl;
         texture = nullptr;
         return;
     }
@@ -84,7 +84,7 @@ void Game::Entity::Texture :: LoadTexture(SDL_Texture* p_tex)
 	texture = p_tex;
 	if (SDL_QueryTexture(texture, nullptr, nullptr, &width, &height) != 0)
 	{
-        std::cerr << "Failed to query texture dimensions: " << SDL_GetError() << std::endl;
+        std::cout << "Failed to query texture dimensions: " << SDL_GetError() << std::endl;
         return;
     }
 }
@@ -131,6 +131,23 @@ int Game::Entity::Texture :: GetHeight() const
 SDL_Texture* Game::Entity::Texture :: GetSDLtexture() const
 {
 	return texture;
+}
+
+void Game::Entity::Texture :: Render(SDL_Renderer* renderer, Math::Vector2D<int> pos, double scale,double angle, SDL_Point* center, SDL_RendererFlip flip)
+{
+    SDL_Rect src;
+	src.x = 0;
+	src.y = 0;
+	src.w = width;
+	src.h = height;
+
+	SDL_Rect dst;
+	dst.x = pos.x;
+	dst.y = pos.y;
+	dst.w = src.w * scale; 
+	dst.h = src.h * scale;
+
+	SDL_RenderCopyEx(renderer, texture, &src, &dst, angle, center, flip);
 }
 
 #endif
