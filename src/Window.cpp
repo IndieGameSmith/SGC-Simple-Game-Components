@@ -6,24 +6,28 @@
  *  \author IndieGameSmith
  *  \date 2024-10-08
  */
+ 
+#ifndef WINDOW_HPP_
+#define WINDOW_HPP_
 
 #include "SDL2/SDL.h" 
 
 #include "Graphics/Window.hpp"
 #include "Utils/Exceptions/Graphics_Exception.hpp"
+#include "Math/Point2D.hpp"
  
-Game::Graphics::Window :: Window()
+Game::Graphics::Window::Window()
 {
     
 }
 
-Game::Graphics::Window :: ~Window()
+Game::Graphics::Window::~Window()
 {
     SDL_DestroyWindow(window);
     window = nullptr;
 }
 
-Game::Graphics::Window :: Window(const char* p_title, int p_w, int p_h) : window(nullptr)
+Game::Graphics::Window::Window(const char* p_title, int p_w, int p_h) : window(nullptr)
 {
     window = SDL_CreateWindow(p_title, SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, p_w, p_h, SDL_WINDOW_SHOWN);
     
@@ -43,7 +47,7 @@ Game::Graphics::Window :: Window(const char* p_title, int p_w, int p_h) : window
     }
 }
 
-void Game::Graphics::Window :: Create(const char* p_title, int p_w, int p_h)
+void Game::Graphics::Window::Create(const char* p_title, int p_w, int p_h)
 {
     window = nullptr;
     window = SDL_CreateWindow(p_title, SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, p_w, p_h, SDL_WINDOW_SHOWN);
@@ -64,7 +68,7 @@ void Game::Graphics::Window :: Create(const char* p_title, int p_w, int p_h)
     }
 }
 
-SDL_DisplayMode Game::Graphics::Window :: CreateDisplayMode(int w, int h, int RefreshRate, Uint32 Format)
+SDL_DisplayMode Game::Graphics::Window::CreateDisplayMode(int w, int h, int RefreshRate, Uint32 Format)
 {
     SDL_DisplayMode mode;
     mode.w = w;
@@ -74,28 +78,28 @@ SDL_DisplayMode Game::Graphics::Window :: CreateDisplayMode(int w, int h, int Re
     return mode;
 }
 
-void Game::Graphics::Window :: SetDisplayMode(SDL_DisplayMode mode)
+void Game::Graphics::Window::SetDisplayMode(SDL_DisplayMode mode)
 {
     SDL_SetWindowDisplayMode(window, &mode);
     Update();
 }
 
-void Game::Graphics::Window :: ResizeWindow(int w, int h)
+void Game::Graphics::Window::ResizeWindow(int w, int h)
 {
     SDL_SetWindowSize(window, w, h);
 }
 
-void Game::Graphics::Window :: MoveWindowTo(int x, int y)
+void Game::Graphics::Window::MoveWindowTo(int x, int y)
 {
     SDL_SetWindowPosition(window, x, y);
 }
 
-void Game::Graphics::Window :: CenterWindow()
+void Game::Graphics::Window::CenterWindow()
 {
     SDL_SetWindowPosition(window, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED);
 }
 
-void Game::Graphics::Window :: Restore()
+void Game::Graphics::Window::Restore()
 {
     Uint32 flags = GetWindowFlags();
     if (flags & SDL_WINDOW_FULLSCREEN)
@@ -108,17 +112,17 @@ void Game::Graphics::Window :: Restore()
     RaiseWindow();
 }
 
-void Game::Graphics::Window :: SetWindowTitle(const char* p_title)
+void Game::Graphics::Window::SetWindowTitle(const char* p_title)
 {
     SDL_SetWindowTitle(window, p_title);
 }
 
-void Game::Graphics::Window :: SetWindowIcon(SDL_Surface* icon)
+void Game::Graphics::Window::SetWindowIcon(SDL_Surface* icon)
 {
     SDL_SetWindowIcon(window, icon);
 }
 
-void Game::Graphics::Window :: SetWindowResizable(bool resizable)
+void Game::Graphics::Window::SetWindowResizable(bool resizable)
 {
    SDL_bool resizableBool = SDL_FALSE;
    if (resizable)
@@ -129,17 +133,17 @@ void Game::Graphics::Window :: SetWindowResizable(bool resizable)
    SDL_SetWindowResizable(window, resizableBool);
 }
 
-void Game::Graphics::Window :: SetWindowOpacity(float opacity)
+void Game::Graphics::Window::SetWindowOpacity(float opacity)
 {
     SDL_SetWindowOpacity(window, opacity);
 }
 
-void Game::Graphics::Window :: SetWindowModal(bool modal)
+void Game::Graphics::Window::SetWindowModal(bool modal)
 {
     isWindowModal = modal;
 }
 
-void Game::Graphics::Window :: ToggleWindowVisiblity()
+void Game::Graphics::Window::ToggleWindowVisiblity()
 {
     Uint32 flags = GetWindowFlags();
     if (flags & SDL_WINDOW_SHOWN)
@@ -152,7 +156,7 @@ void Game::Graphics::Window :: ToggleWindowVisiblity()
     }
 }
 
-void Game::Graphics::Window :: ToggleFullscreen()
+void Game::Graphics::Window::ToggleFullscreen()
 {
     Uint32 flags = GetWindowFlags();
     if (flags & SDL_WINDOW_FULLSCREEN)
@@ -165,7 +169,7 @@ void Game::Graphics::Window :: ToggleFullscreen()
     }
 }
 
-void Game::Graphics::Window :: ToggleBorder()
+void Game::Graphics::Window::ToggleBorder()
 {
     Uint32 flags = GetWindowFlags();
     if (flags & SDL_WINDOW_BORDERLESS)
@@ -178,7 +182,7 @@ void Game::Graphics::Window :: ToggleBorder()
     }
 }
 
-void Game::Graphics::Window :: ToggleMaximize()
+void Game::Graphics::Window::ToggleMaximize()
 {
     Uint32 flags = GetWindowFlags();
     if (flags & SDL_WINDOW_MINIMIZED)
@@ -187,7 +191,7 @@ void Game::Graphics::Window :: ToggleMaximize()
     }
 }
 
-void Game::Graphics::Window :: ToggleMinimize()
+void Game::Graphics::Window::ToggleMinimize()
 {
     Uint32 flags = GetWindowFlags();
     if (flags & SDL_WINDOW_MINIMIZED)
@@ -196,12 +200,12 @@ void Game::Graphics::Window :: ToggleMinimize()
     }
 }
 
-void Game::Graphics::Window :: RaiseWindow()
+void Game::Graphics::Window::RaiseWindow()
 {
     SDL_RaiseWindow(window);
 }
 
-void Game::Graphics::Window :: ShowMessageBox(const char* p_title, const char* message, MessageType messageType)
+void Game::Graphics::Window::ShowMessageBox(const char* p_title, const char* message, MessageType messageType)
 {
     switch(messageType)
     {
@@ -220,7 +224,7 @@ void Game::Graphics::Window :: ShowMessageBox(const char* p_title, const char* m
     }
 }
 
-void Game::Graphics::Window :: Update()
+void Game::Graphics::Window::Update()
 {
     SDL_GetWindowPosition(window, &windowPos.x, &windowPos.y);
     if (SDL_GetCurrentDisplayMode(0, &displayMode) < 0)
@@ -231,17 +235,17 @@ void Game::Graphics::Window :: Update()
     }
 }
 
-SDL_Window* Game::Graphics::Window :: GetWindow() const 
+SDL_Window* Game::Graphics::Window::GetWindow() const 
 {
     return window;
 }
 
-Uint32 Game::Graphics::Window :: GetWindowFlags() const
+Uint32 Game::Graphics::Window::GetWindowFlags() const
 {
     return SDL_GetWindowFlags(window);
 }
 
-Game::Math::Point2D<int> Game::Graphics::Window :: GetWindowCenter() const
+Game::Math::Point2D<int> Game::Graphics::Window::GetWindowCenter() const
 {
     Game::Math::Point2D<int> CentrePos, WindowSize;
     SDL_GetWindowSize(window, &WindowSize.x, &WindowSize.y);
@@ -250,7 +254,7 @@ Game::Math::Point2D<int> Game::Graphics::Window :: GetWindowCenter() const
     return CentrePos;
 }
 
-Game::Math::Pair<int, int> Game::Graphics::Window :: GetWindowSize() const
+Game::Math::Pair<int, int> Game::Graphics::Window::GetWindowSize() const
 {
     Game::Math::Pair<int, int> WindowSize;
     SDL_GetWindowSize(window, &WindowSize.first, &WindowSize.second);
@@ -272,48 +276,49 @@ SDL_DisplayMode Game::Graphics::Window ::GetDisplayMode(int displayIndex, int mo
     return mode;
 }
 
-SDL_DisplayMode Game::Graphics::Window :: GetWindowDisplayMode() const
+Uint32 Game::Graphics::Window::GetWindowFormat() const
+{
+    SDL_DisplayMode mode = GetWindowDisplayMode();
+    return mode.format;
+}
+
+int Game::Graphics::Window::GetWindowDisplayIndex() const
+{
+    return SDL_GetWindowDisplayIndex(window);
+}
+
+SDL_DisplayMode Game::Graphics::Window::GetWindowDisplayMode() const
 {
     int displayIndex = GetWindowDisplayIndex();
     SDL_DisplayMode mode = GetDisplayMode(displayIndex, 0);
     return mode;
 }
 
-
-Uint32 Game::Graphics::Window :: GetWindowFormat() const
-{
-    SDL_DisplayMode mode = GetWindowDisplayMode();
-    return mode.format;
-}
-
-int Game::Graphics::Window :: GetWindowDisplayIndex() const
-{
-    return SDL_GetWindowDisplayIndex(window);
-}
-
-int Game::Graphics::Window :: GetRefreshRate() const
+int Game::Graphics::Window::GetRefreshRate() const
 {
     SDL_DisplayMode mode = GetWindowDisplayMode();
     return mode.refresh_rate;
 }
 
-bool Game::Graphics::Window :: IsWindowOpen() const
+bool Game::Graphics::Window::IsWindowOpen() const
 {
     return SDL_GetWindowFlags(window) & SDL_WINDOW_SHOWN;
 }
 
-bool Game::Graphics::Window :: HasError() const
+bool Game::Graphics::Window::HasError() const
 {
     return SDL_GetError() != nullptr;
 }
 
-const char* Game::Graphics::Window :: GetLastError() const
+const char* Game::Graphics::Window::GetLastError() const
 {
     return SDL_GetError();
 }
 
-void Game::Graphics::Window :: Destroy()
+void Game::Graphics::Window::Destroy()
 {
     SDL_DestroyWindow(window);
     window = nullptr;
- }
+}
+
+#endif
