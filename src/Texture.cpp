@@ -1,13 +1,13 @@
 #include "Entity/Texture.hpp"
 #include "Math/Vector2D.hpp"
 
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_image.h>
-#include <SDL2/SDL_ttf.h>
+#include "SDL2/SDL.h"
+#include "SDL2/SDL_image.h"
+#include "SDL2/SDL_ttf.h"
 
-Game::Entity::Texture :: Texture(){}
+Game::Entity::Texture::Texture(){}
 
-Game::Entity::Texture :: Texture(SDL_Renderer* p_renderer, const char* p_path)
+Game::Entity::Texture::Texture(SDL_Renderer* p_renderer, const char* p_path)
 {
 	SDL_Surface* textureSurface = IMG_Load(p_path);
 	if (textureSurface == nullptr)
@@ -32,7 +32,7 @@ Game::Entity::Texture :: Texture(SDL_Renderer* p_renderer, const char* p_path)
     }
 }
 
-Game::Entity::Texture :: Texture(SDL_Texture* p_tex)
+Game::Entity::Texture::Texture(SDL_Texture* p_tex)
 {
 	texture = p_tex;
 	if (SDL_QueryTexture(texture, nullptr, nullptr, &width, &height) != 0)
@@ -42,7 +42,7 @@ Game::Entity::Texture :: Texture(SDL_Texture* p_tex)
     }
 }
 
-Game::Entity::Texture :: ~Texture()
+Game::Entity::Texture::~Texture()
 {
 	if (texture != nullptr)
 	{
@@ -51,7 +51,7 @@ Game::Entity::Texture :: ~Texture()
 	texture = nullptr;
 }
 
-void Game::Entity::Texture :: LoadFromFile(SDL_Renderer* p_renderer, const char* p_path)
+void Game::Entity::Texture::LoadFromFile(SDL_Renderer* p_renderer, const char* p_path)
 {
 	SDL_Surface* textureSurface = IMG_Load(p_path);
 	if (textureSurface == nullptr)
@@ -76,7 +76,7 @@ void Game::Entity::Texture :: LoadFromFile(SDL_Renderer* p_renderer, const char*
     }
 }
 
-void Game::Entity::Texture :: LoadTexture(SDL_Texture* p_tex)
+void Game::Entity::Texture::LoadTexture(SDL_Texture* p_tex)
 {
 	texture = p_tex;
 	if (SDL_QueryTexture(texture, nullptr, nullptr, &width, &height) != 0)
@@ -86,7 +86,7 @@ void Game::Entity::Texture :: LoadTexture(SDL_Texture* p_tex)
     }
 }
 
-void Game::Entity::Texture :: Unload()
+void Game::Entity::Texture::Unload()
 {
 	if (texture != nullptr)
 	{
@@ -95,7 +95,7 @@ void Game::Entity::Texture :: Unload()
 	texture = nullptr;
 }
 
-SDL_Texture* Game::Entity::Texture :: LoadTextureFromFile(SDL_Renderer* p_renderer, const char* p_path)
+SDL_Texture* Game::Entity::Texture::LoadTextureFromFile(SDL_Renderer* p_renderer, const char* p_path)
 {
 	SDL_Surface* textureSurface = IMG_Load(p_path);
 	if (textureSurface == nullptr)
@@ -115,22 +115,22 @@ SDL_Texture* Game::Entity::Texture :: LoadTextureFromFile(SDL_Renderer* p_render
 	return tex;
 }
 
-int Game::Entity::Texture :: GetWidth() const
+int Game::Entity::Texture::GetWidth() const
 {
 	return width;
 }
 
-int Game::Entity::Texture :: GetHeight() const
+int Game::Entity::Texture::GetHeight() const
 {
 	return height;
 }
 
-SDL_Texture* Game::Entity::Texture :: GetSDLtexture() const
+SDL_Texture* Game::Entity::Texture::GetSDLtexture() const
 {
 	return texture;
 }
 
-void Game::Entity::Texture :: Render(SDL_Renderer* renderer, Math::Vector2D<int> pos, double scale,double angle, SDL_Point* center, SDL_RendererFlip flip)
+void Game::Entity::Texture::Render(SDL_Renderer* renderer, Math::Vector2D<int> pos, double scale,double angle, SDL_Point* center, SDL_RendererFlip flip)
 {
     SDL_Rect src;
 	src.x = 0;
