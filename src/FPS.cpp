@@ -1,9 +1,8 @@
-
 #include "SDL2/SDL.h"
 
 #include "Mechanics/FPS.hpp"
 
-Game::Mechanics::FPS :: FPS(int p_fps)
+Game::Mechanics::FPS::FPS(int p_fps)
 {
     accumulator = 0.00f;
 	currentFrameIndex = 0;
@@ -14,7 +13,7 @@ Game::Mechanics::FPS :: FPS(int p_fps)
 	deltaTime = 1.0f / fps;
 }
 
-void Game::Mechanics::FPS :: Init()
+void Game::Mechanics::FPS::Init()
 {
     currentTime = SDL_GetPerformanceCounter();
     elapsedTime = (currentTime - previousTime) / (float)SDL_GetPerformanceFrequency();
@@ -39,12 +38,12 @@ void Game::Mechanics::FPS :: Init()
     currentFps = 1.0f / averageFrameTime;
 }
 
-void Game::Mechanics::FPS :: Stablize()
+void Game::Mechanics::FPS::Stablize()
 {
     accumulator -= deltaTime;
 }
 
-void Game::Mechanics::FPS :: Cap()
+void Game::Mechanics::FPS::Cap()
 {
     alpha = accumulator / deltaTime;
     if (accumulator > deltaTime)
@@ -58,12 +57,12 @@ void Game::Mechanics::FPS :: Cap()
 	}
 }
 
-bool Game::Mechanics::FPS :: UpdateTick()
+bool Game::Mechanics::FPS::UpdateTick()
 {
     return accumulator >= deltaTime;
 }
 
-int Game::Mechanics::FPS :: GetFPS() const
+int Game::Mechanics::FPS::GetFPS() const
 {
     return currentFps;
 }
