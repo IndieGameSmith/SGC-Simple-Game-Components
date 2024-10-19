@@ -25,31 +25,31 @@ std::ostream& operator<<(std::ostream &str, Game::Math::Vector2D<T> const &v)
 }
 
 template <typename T>
-Game::Math::Vector2D<T> :: Vector2D() : x(0.0f), y(0.0f)
+Game::Math::Vector2D<T>::Vector2D() : x(0.0f), y(0.0f)
 {
     
 }
 
 template <typename T>
-Game::Math::Vector2D<T> :: Vector2D(T p_x, T p_y) : x(p_x), y(p_y)
+Game::Math::Vector2D<T>::Vector2D(T p_x, T p_y) : x(p_x), y(p_y)
 {
     
 }
 
 template <typename T>
-Game::Math::Vector2D<T> Game::Math::Vector2D<T> :: operator+(const Game::Math::Vector2D<T>& other) const
+Game::Math::Vector2D<T> Game::Math::Vector2D<T>::operator+(const Game::Math::Vector2D<T>& other) const
 {
 	return Vector2D<T>(x + other.x, y + other.y);
 }
 
 template <typename T>
-Game::Math::Vector2D<T> Game::Math::Vector2D<T> :: operator-(const Game::Math::Vector2D<T>& other) const
+Game::Math::Vector2D<T> Game::Math::Vector2D<T>::operator-(const Game::Math::Vector2D<T>& other) const
 {
 	return Vector2D<T>(x - other.x, y - other.y);
 }
 
 template <typename T>
-Game::Math::Vector2D<T> Game::Math::Vector2D<T> :: operator*(const double scaler) const
+Game::Math::Vector2D<T> Game::Math::Vector2D<T>::operator*(const double scaler) const
 {
     return Vector2D<T>(x * scaler, y * scaler);
 }
@@ -64,7 +64,7 @@ Game::Math::Vector2D<T> Game::Math::Vector2D<T>::operator*(const Matrix2D<T>& ma
 }
 
 template <typename T>
-Game::Math::Vector2D<T> Game::Math::Vector2D<T> :: operator/(const double scaler) const
+Game::Math::Vector2D<T> Game::Math::Vector2D<T>::operator/(const double scaler) const
 {
 	if (scaler == 0)
 		throw Game::Math::Exception::DivisionByZero("Can't be divided by 0");
@@ -73,61 +73,61 @@ Game::Math::Vector2D<T> Game::Math::Vector2D<T> :: operator/(const double scaler
 }
 
 template <typename T>
-bool Game::Math::Vector2D<T> :: operator==(const Vector2D<T>& other) const
+bool Game::Math::Vector2D<T>::operator==(const Vector2D<T>& other) const
 {
     return x == other.x && y == other.y;
 }
 
 template <typename T>
-bool Game::Math::Vector2D<T> :: operator!=(const Vector2D<T>& other) const
+bool Game::Math::Vector2D<T>::operator!=(const Vector2D<T>& other) const
 {
     return !(x == other.x && y == other.y);
 }
 
 template <typename T>
-bool Game::Math::Vector2D<T> :: operator<(const Vector2D<T>& other) const
+bool Game::Math::Vector2D<T>::operator<(const Vector2D<T>& other) const
 {
     return Magnitude() < other.Magnitude();
 }
 
 template <typename T>
-bool Game::Math::Vector2D<T> :: operator>(const Vector2D<T>& other) const
+bool Game::Math::Vector2D<T>::operator>(const Vector2D<T>& other) const
 {
     return Magnitude() > other.Magnitude();
 }
 
 template <typename T>
-bool Game::Math::Vector2D<T> :: operator<=(const Vector2D<T>& other) const
+bool Game::Math::Vector2D<T>::operator<=(const Vector2D<T>& other) const
 {
     return Magnitude() < other.Magnitude() || Magnitude() == other.Magnitude();
 }
 
 template <typename T>
-bool Game::Math::Vector2D<T> :: operator>=(const Vector2D<T>& other) const
+bool Game::Math::Vector2D<T>::operator>=(const Vector2D<T>& other) const
 {
     return Magnitude() > other.Magnitude() || Magnitude() == other.Magnitude();
 }
 
 template <typename T>
-Game::Math::Vector2D<T> Game::Math::Vector2D<T> :: Add(const Game::Math::Vector2D<T>& other) const
+Game::Math::Vector2D<T> Game::Math::Vector2D<T>::Add(const Game::Math::Vector2D<T>& other) const
 {
     return Vector2D<T>(x + other.x, y + other.y);
 }
 
 template <typename T>
-Game::Math::Vector2D<T> Game::Math::Vector2D<T> :: Sub(const Game::Math::Vector2D<T>& other) const
+Game::Math::Vector2D<T> Game::Math::Vector2D<T>::Sub(const Game::Math::Vector2D<T>& other) const
 {
     return Vector2D<T>(x - other.x, y - other.y);
 }
 
 template <typename T>
-Game::Math::Vector2D<T> Game::Math::Vector2D<T> :: Multiply(const double scaler) const
+Game::Math::Vector2D<T> Game::Math::Vector2D<T>::Multiply(const double scaler) const
 {
     return Vector2D<T>(x * scaler, y * scaler);
 }
 
 template <typename T>
-Game::Math::Vector2D<T> Game::Math::Vector2D<T> :: Divide(const double scaler) const
+Game::Math::Vector2D<T> Game::Math::Vector2D<T>::Divide(const double scaler) const
 {
     if (scaler == 0)
 	throw Game::Math::Exception::DivisionByZero("Can't be divided by 0");
@@ -136,25 +136,25 @@ Game::Math::Vector2D<T> Game::Math::Vector2D<T> :: Divide(const double scaler) c
 }
 
 template <typename T>
-double Game::Math::Vector2D<T> :: DotProduct(const Game::Math::Vector2D<T>& other) const
+double Game::Math::Vector2D<T>::DotProduct(const Game::Math::Vector2D<T>& other) const
 {
     return x * other.x + y * other.y;
 }
 
 template <typename T>
-double Game::Math::Vector2D<T> :: CrossProduct(const Game::Math::Vector2D<T>& other) const
+double Game::Math::Vector2D<T>::CrossProduct(const Game::Math::Vector2D<T>& other) const
 {
     return x * other.x - y * other.y;
 }
 
 template <typename T>
-double Game::Math::Vector2D<T> :: Magnitude() const
+double Game::Math::Vector2D<T>::Magnitude() const
 {
     return std::sqrt(x * x + y * y);
 }
 
 template <typename T>
-Game::Math::Vector2D<T> Game::Math::Vector2D<T> :: Normalize() const
+Game::Math::Vector2D<T> Game::Math::Vector2D<T>::Normalize() const
 {
     double mag = Magnitude();
     
@@ -171,7 +171,7 @@ Game::Math::Vector2D<T> Game::Math::Vector2D<T> :: Normalize() const
 }
 
 template <typename T>
-double Game::Math::Vector2D<T> :: DistanceFrom(const Game::Math::Vector2D<T>& other) const
+double Game::Math::Vector2D<T>::DistanceFrom(const Game::Math::Vector2D<T>& other) const
 {
     double dx = other.x - x;
     double dy = other.y - y;
@@ -179,7 +179,7 @@ double Game::Math::Vector2D<T> :: DistanceFrom(const Game::Math::Vector2D<T>& ot
 }
 
 template <typename T>
-double Game::Math::Vector2D<T> :: Angle(const Game::Math::Vector2D<T>& other) const
+double Game::Math::Vector2D<T>::Angle(const Game::Math::Vector2D<T>& other) const
 {
     if (IsEmpty() == true || other.IsEmpty() == true)
     {
@@ -196,7 +196,7 @@ double Game::Math::Vector2D<T> :: Angle(const Game::Math::Vector2D<T>& other) co
 }
 
 template <typename T>
-Game::Math::Vector2D<T> Game::Math::Vector2D<T> :: ProjectOn(const Game::Math::Vector2D<T>& Target) const
+Game::Math::Vector2D<T> Game::Math::Vector2D<T>::ProjectOn(const Game::Math::Vector2D<T>& Target) const
 {
     if (IsEmpty() == true || Target.IsEmpty() == true)
     {
@@ -213,7 +213,7 @@ Game::Math::Vector2D<T> Game::Math::Vector2D<T> :: ProjectOn(const Game::Math::V
 }
 
 template <typename T>
-Game::Math::Vector2D<T> Game::Math::Vector2D<T> :: Reflect(const Game::Math::Vector2D<T>& SurfaceNormal)
+Game::Math::Vector2D<T> Game::Math::Vector2D<T>::Reflect(const Game::Math::Vector2D<T>& SurfaceNormal)
 {
     if (IsEmpty() == true || SurfaceNormal.IsEmpty() == true)
     {
@@ -230,7 +230,7 @@ Game::Math::Vector2D<T> Game::Math::Vector2D<T> :: Reflect(const Game::Math::Vec
 }
 
 template <typename T>
-Game::Math::Vector2D<T> Game::Math::Vector2D<T> :: Rotate(const double angle)
+Game::Math::Vector2D<T> Game::Math::Vector2D<T>::Rotate(const double angle)
 {
     if (IsEmpty() == true)
     {
@@ -250,14 +250,14 @@ Game::Math::Vector2D<T> Game::Math::Vector2D<T> :: Rotate(const double angle)
 }
 
 template <typename T>
-void Game::Math::Vector2D<T> :: Clamp(const Vector2D<T>& min, const Vector2D<T>& max)
+void Game::Math::Vector2D<T>::Clamp(const Vector2D<T>& min, const Vector2D<T>& max)
 {
     x = std::clamp(x, min.x, max.x);
     y = std::clamp(y, min.y, max.y);
 }
 
 template <typename T>
-Game::Math::Vector2D<T> Game::Math::Vector2D<T> :: Round(const Game::Math::Vec2D_Round_Flag& flag)
+Game::Math::Vector2D<T> Game::Math::Vector2D<T>::Round(const Game::Math::Vec2D_Round_Flag& flag)
 {
     Vector2D<T> RoundedVector;
     switch (flag)
@@ -283,7 +283,7 @@ Game::Math::Vector2D<T> Game::Math::Vector2D<T> :: Round(const Game::Math::Vec2D
 }
 
 template <typename T>
-Game::Math::Vector2D<T> Game::Math::Vector2D<T> :: Lerp(const Game::Math::Vector2D<T>& other, const float t) const
+Game::Math::Vector2D<T> Game::Math::Vector2D<T>::Lerp(const Game::Math::Vector2D<T>& other, const float t) const
 {
     T x = x + (other.x - x) * t;
     T y = y + (other.y - y) * t;
@@ -291,13 +291,13 @@ Game::Math::Vector2D<T> Game::Math::Vector2D<T> :: Lerp(const Game::Math::Vector
 }
 
 template <typename T>
-Game::Math::Vector2D<T> Game::Math::Vector2D<T> :: Perpendicular() const
+Game::Math::Vector2D<T> Game::Math::Vector2D<T>::Perpendicular() const
 {
 	return Vector2D<T>(-y, x);
 }
 
 template <typename T>
-Game::Math::Vector2D<T> Game::Math::Vector2D<T> :: Translate(const T a, const T b)
+Game::Math::Vector2D<T> Game::Math::Vector2D<T>::Translate(const T a, const T b)
 {
 	Vector2D<T> TranslatedVector(x + a, y + b);
 	*this = TranslatedVector;
@@ -305,19 +305,19 @@ Game::Math::Vector2D<T> Game::Math::Vector2D<T> :: Translate(const T a, const T 
 }
 
 template <typename T>
-bool Game::Math::Vector2D<T> :: IsEmpty() const
+bool Game::Math::Vector2D<T>::IsEmpty() const
 {
 	return (Magnitude() == 0.0f);
 }
 
 template <typename T>
-Game::Math::Vector2D<T> Game::Math::Vector2D<T> :: GetVec() const
+Game::Math::Vector2D<T> Game::Math::Vector2D<T>::GetVec() const
 {
     return Vector2D<T>(x, y);
 }
 
 template <typename T>
-void Game::Math::Vector2D<T> :: SetVec(T p_x, T p_y)
+void Game::Math::Vector2D<T>::SetVec(T p_x, T p_y)
 {
     x = p_x;
     y = p_y;
